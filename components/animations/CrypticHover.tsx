@@ -46,7 +46,7 @@ export default function CrypticHover({
         const progress = frame / iterations;
         tl.call(
           () => {
-            const scrambled = chars.map((char, i) => {
+            const scrambled = chars.map((char) => {
               // More characters scramble as we progress
               if (Math.random() < progress * 0.8) {
                 return getRandomChar();

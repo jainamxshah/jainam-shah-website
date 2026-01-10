@@ -43,7 +43,7 @@ export default function WorkPhilosophy() {
             variants={itemVariants}
             className="font-display text-2xl md:text-3xl lg:text-4xl text-background leading-snug mb-6"
           >
-            "Every project is a business challenge, not just a design problem."
+            &quot;Every project is a business challenge, not just a design problem.&quot;
           </motion.blockquote>
 
           {/* Subtext */}

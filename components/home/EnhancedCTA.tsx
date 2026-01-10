@@ -44,7 +44,7 @@ export default function EnhancedCTA() {
             variants={itemVariants}
             className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6"
           >
-            Let's build something that matters.
+            Let&apos;s build something that matters.
           </motion.h2>
 
           {/* Supporting Text */}

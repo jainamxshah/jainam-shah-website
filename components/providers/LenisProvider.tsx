@@ -9,7 +9,7 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
 
   useEffect(() => {
     // Initialize Lenis on mount
-    const lenis = initLenis();
+    initLenis();
 
     // Cleanup on unmount
     return () => {

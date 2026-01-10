@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import { stats } from '@/lib/stats';
 
@@ -64,11 +64,6 @@ function CountUp({ target, suffix = '', displayValue, isInView }: CountUpProps) 
       requestAnimationFrame(animateCount);
     }
   }, [isInView, target, hasAnimated]);
-
-  // Handle special display values like "50K"
-  const displayNumber = displayValue.includes('K')
-    ? `${Math.floor(count / 1000)}K`
-    : count.toString();
 
   return (
     <span>

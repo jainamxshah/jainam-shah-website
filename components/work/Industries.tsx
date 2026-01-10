@@ -43,7 +43,7 @@ export default function Industries() {
             variants={itemVariants}
             className="font-sans text-2xl md:text-3xl lg:text-4xl font-medium text-background mb-12"
           >
-            Industries I've Worked In
+            Industries I&apos;ve Worked In
           </motion.h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

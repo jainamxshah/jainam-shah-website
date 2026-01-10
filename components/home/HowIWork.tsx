@@ -76,7 +76,7 @@ export default function HowIWork() {
               <div className="absolute top-6 left-0 right-0 h-[1px] bg-background/20" />
               
               <div className="grid grid-cols-4 gap-8">
-                {steps.map((step, index) => (
+                {steps.map((step) => (
                   <motion.div
                     key={step.number}
                     variants={itemVariants}

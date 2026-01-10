@@ -96,7 +96,7 @@ function parseContent(content: string) {
     }
 
     // Bold text handling
-    let processedLine = line;
+    const processedLine = line;
     if (line.includes('**')) {
       const parts = line.split(/\*\*(.*?)\*\*/g);
       elements.push(

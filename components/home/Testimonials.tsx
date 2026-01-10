@@ -51,7 +51,7 @@ export default function Testimonials() {
           <motion.div variants={itemVariants} className="text-center">
             {/* Quote Mark */}
             <span className="text-6xl md:text-8xl text-accent font-display leading-none block mb-4">
-              "
+              &quot;
             </span>
 
             {/* Quote Text */}
