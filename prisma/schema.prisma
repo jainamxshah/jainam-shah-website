@@ -1,0 +1,103 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User Model (Admin Authentication)
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String // Hashed with bcrypt
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  projects Project[]
+  articles Article[]
+}
+
+// Project Model
+model Project {
+  id               String  @id @default(cuid())
+  name             String
+  slug             String  @unique
+  shortDescription String
+  outcomeMetric    String
+  thumbnailUrl     String
+  heroImageUrl     String
+  impactSummary    String
+  year             String
+  role             String
+  techStack        String[] // Array of strings
+  tags             String[]
+
+  // Content sections (stored as JSON)
+  context   Json // { title: string, body: string }
+  approach  Json // { title: string, body: string, callout?: string }
+  execution Json // { title: string, body: string, images?: [...] }
+  outcome   Json // { title: string, metrics: [...], summary: string }
+
+  // SEO metadata
+  seoTitle       String
+  seoDescription String
+  seoOgImage     String?
+
+  // Navigation
+  nextProjectSlug String?
+  prevProjectSlug String?
+
+  // Publishing
+  published   Boolean   @default(false)
+  publishedAt DateTime?
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id])
+
+  @@index([slug])
+  @@index([published])
+}
+
+// Article Model
+model Article {
+  id            String  @id @default(cuid())
+  title         String
+  slug          String  @unique
+  excerpt       String
+  content       String  @db.Text // Rich text/Markdown
+  category      String
+  readTime      String
+  featuredImage String?
+
+  // SEO metadata
+  seoTitle       String
+  seoDescription String
+  seoOgImage     String?
+
+  // Publishing
+  published   Boolean   @default(false)
+  publishedAt DateTime?
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id])
+
+  @@index([slug])
+  @@index([published])
+  @@index([category])
+}
