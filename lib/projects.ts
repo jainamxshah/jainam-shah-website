@@ -24,6 +24,12 @@ export interface Project {
   role: string;
   techStack?: string[];
 
+  // Work page canvas fields
+  identityTag: string; // e.g., "Growth Engine", "Knowledge OS"
+  workPageVisualUrl: string; // Large hero image for canvas
+  workPageDescription: string; // Short description for right column
+  workPageOutcome: string; // One-line outcome in accent color
+
   // Content sections
   context: {
     title: string;
@@ -55,15 +61,19 @@ export const projects: Project[] = [
     id: '1',
     name: 'Surfgeo',
     slug: 'surfgeo',
-    shortDescription: 'Flagship generative engine optimization app',
+    shortDescription: 'AI-powered SEO engine for compounding organic growth',
     outcomeMetric: 'GEO ↑ 400%',
     thumbnailUrl: '/images/projects/surfgeo.jpg',
     heroImageUrl: '/images/projects/surfgeo-hero.jpg',
     impactSummary: 'Pioneered AI-driven optimization that increased organic visibility by 400%',
-    year: '2024',
+    year: '2024–2025',
     role: 'Product Design & Development',
-    tags: ['AI', 'SEO', 'NEXTJS', 'GENERATIVE'],
+    tags: ['AI', 'SEO', 'SaaS', 'B2B'],
     techStack: ['Next.js', 'OpenAI', 'Vercel', 'PostgreSQL'],
+    identityTag: 'Growth Engine',
+    workPageVisualUrl: '/images/projects/surfgeo-dashboard.jpg',
+    workPageDescription: 'AI-powered SEO and growth platform for AI companies.',
+    workPageOutcome: 'Turns organic search into a predictable acquisition channel.',
     context: {
       title: 'The Challenge',
       body: `Traditional SEO was failing in the age of AI answers. Businesses were watching their organic traffic decline as users shifted to AI-powered search experiences that synthesized answers instead of linking to sources.
@@ -109,15 +119,19 @@ The interface was designed for marketing teams, not developers—clear visualiza
     id: '2',
     name: 'Nexus AI',
     slug: 'nexus-ai',
-    shortDescription: 'Enterprise knowledge management platform',
+    shortDescription: 'Enterprise knowledge intelligence platform',
     outcomeMetric: 'Productivity ↑ 280%',
     thumbnailUrl: '/images/projects/nexus-ai.jpg',
     heroImageUrl: '/images/projects/nexus-ai-hero.jpg',
     impactSummary: 'Transformed enterprise knowledge access, boosting team productivity by 280%',
     year: '2024',
     role: 'Technical Architecture & Product Strategy',
-    tags: ['AI', 'ENTERPRISE', 'RAG', 'KNOWLEDGE'],
+    tags: ['LLMs', 'RAG', 'Workflow Automation'],
     techStack: ['Python', 'LangChain', 'Pinecone', 'React'],
+    identityTag: 'Knowledge OS',
+    workPageVisualUrl: '/images/projects/nexus-chat.jpg',
+    workPageDescription: 'Enterprise knowledge and AI system.',
+    workPageOutcome: 'Transforms company data into searchable intelligence.',
     context: {
       title: 'The Challenge',
       body: `A Fortune 500 technology company was drowning in its own knowledge. With 15 years of documentation, Confluence pages, Slack threads, and institutional wisdom scattered across dozens of systems, employees spent an average of 2.5 hours daily searching for information they knew existed.
@@ -163,15 +177,19 @@ Security was paramount—we implemented role-based access that respects source s
     id: '3',
     name: 'Quantflow',
     slug: 'quantflow',
-    shortDescription: 'Real-time trading analytics engine',
+    shortDescription: 'Real-time trading and analytics engine',
     outcomeMetric: 'Scale → 50K Users',
     thumbnailUrl: '/images/projects/quantflow.jpg',
     heroImageUrl: '/images/projects/quantflow-hero.jpg',
     impactSummary: 'Built a real-time analytics platform that scaled to 50,000 active traders',
-    year: '2023',
+    year: '2023–2024',
     role: 'Full-Stack Development & System Architecture',
-    tags: ['FINTECH', 'ANALYTICS', 'PYTHON', 'REALTIME'],
+    tags: ['Fintech', 'Data', 'AI'],
     techStack: ['Python', 'FastAPI', 'Redis', 'React', 'WebSocket'],
+    identityTag: 'Decision Engine',
+    workPageVisualUrl: '/images/projects/quantflow-dashboard.jpg',
+    workPageDescription: 'Real-time trading and analytics platform.',
+    workPageOutcome: 'Enables faster, data-driven decisions.',
     context: {
       title: 'The Challenge',
       body: `Retail traders were making decisions with institutional-grade complexity using consumer-grade tools. The gap between professional trading terminals and retail apps wasn't just features—it was the speed and depth of analysis available.
@@ -217,15 +235,19 @@ We implemented a tiered architecture that ensures latency stays under 50ms for a
     id: '4',
     name: 'Aura Health',
     slug: 'aura-health',
-    shortDescription: 'AI-powered diagnostic assistance system',
+    shortDescription: 'AI-powered diagnostic assistance',
     outcomeMetric: 'Accuracy ↑ 94%',
     thumbnailUrl: '/images/projects/aura-health.jpg',
     heroImageUrl: '/images/projects/aura-health-hero.jpg',
     impactSummary: 'Achieved 94% diagnostic accuracy in preliminary patient assessments',
-    year: '2023',
+    year: '2024',
     role: 'AI/ML Development & Product Design',
-    tags: ['HEALTHCARE', 'ML', 'REACT', 'DIAGNOSTIC'],
+    tags: ['Healthcare', 'ML', 'Decision Systems'],
     techStack: ['PyTorch', 'FastAPI', 'React', 'PostgreSQL'],
+    identityTag: 'Diagnostic AI',
+    workPageVisualUrl: '/images/projects/aura-interface.jpg',
+    workPageDescription: 'AI-powered diagnostic system.',
+    workPageOutcome: 'Improves accuracy and speed in medical insights.',
     context: {
       title: 'The Challenge',
       body: `Primary care physicians face an impossible task: accurate diagnosis under time pressure. With average appointment times of 15 minutes and thousands of possible conditions, even experienced doctors miss patterns or overlook rare presentations.
@@ -276,10 +298,14 @@ We implemented strict privacy controls exceeding HIPAA requirements, with all pa
     thumbnailUrl: '/images/projects/voxel-commerce.jpg',
     heroImageUrl: '/images/projects/voxel-commerce-hero.jpg',
     impactSummary: 'Revolutionized e-commerce discovery, increasing conversion rates by 32%',
-    year: '2024',
+    year: '2023',
     role: 'Product Strategy & AI Development',
-    tags: ['E-COMMERCE', 'LLM', 'NEXTJS', 'CONVERSATIONAL'],
+    tags: ['Ecommerce', 'AI', 'LLM'],
     techStack: ['Next.js', 'GPT-4', 'Vercel', 'Shopify'],
+    identityTag: 'Commerce AI',
+    workPageVisualUrl: '/images/projects/voxel-chat.jpg',
+    workPageDescription: 'Conversational commerce platform.',
+    workPageOutcome: 'Turns conversations into revenue.',
     context: {
       title: 'The Challenge',
       body: `E-commerce search was stuck in 2010. Users typed keywords, scrolled through endless grids, and applied filters they didn't fully understand. For complex purchases—"something for my nephew's birthday, he's into science but not chemistry"—the experience failed completely.

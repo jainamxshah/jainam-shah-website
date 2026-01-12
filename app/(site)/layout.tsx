@@ -1,25 +1,29 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+
+// Pages that don't need footer (full-screen canvas pages)
+const noFooterPages = ['/work'];
 
 export default function SiteLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+  const hideFooter = noFooterPages.includes(pathname);
+
   return (
     <>
-      {/* Skip to main content - Accessibility */}
-      <a href="#main-content" className="skip-to-content">
-        Skip to main content
-      </a>
-      
       <Header />
       
-      <main id="main-content" tabIndex={-1}>
+      <main id="main-content">
         {children}
       </main>
       
-      <Footer />
+      {!hideFooter && <Footer />}
     </>
   );
 }

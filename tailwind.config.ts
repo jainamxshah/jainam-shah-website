@@ -17,10 +17,18 @@ const config: Config = {
         neue: ['var(--font-neue-montreal)'],
       },
       fontSize: {
-        'hero-desktop': ['140px', { lineHeight: '0.98', letterSpacing: '-0.02em' }],
-        'hero-tablet': ['96px', { lineHeight: '0.98', letterSpacing: '-0.02em' }],
-        'hero-mobile': ['56px', { lineHeight: '1', letterSpacing: '-0.02em' }],
-        'display': ['128px', { lineHeight: '0.95' }],
+        // Reduced global font sizes
+        'hero-desktop': ['48px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+        'hero-tablet': ['36px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+        'hero-mobile': ['28px', { lineHeight: '1.25', letterSpacing: '-0.01em' }],
+        'display': ['64px', { lineHeight: '1.1' }],
+        'section-title': ['32px', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
+        'section-title-sm': ['24px', { lineHeight: '1.3' }],
+        'card-title': ['20px', { lineHeight: '1.3' }],
+        'body-lg': ['16px', { lineHeight: '1.7' }],
+        'body': ['15px', { lineHeight: '1.7' }],
+        'body-sm': ['14px', { lineHeight: '1.6' }],
+        'caption': ['12px', { lineHeight: '1.5' }],
       },
       spacing: {
         '18': '72px',

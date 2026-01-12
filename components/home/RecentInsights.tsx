@@ -119,3 +119,4 @@ export default function RecentInsights({ articles }: RecentInsightsProps) {
   );
 }
 
+

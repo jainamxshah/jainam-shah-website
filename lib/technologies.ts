@@ -33,3 +33,4 @@ export const technologies: Technology[] = [
   { name: 'GitHub Actions', category: 'tools' },
 ];
 
+

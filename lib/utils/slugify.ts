@@ -17,3 +17,4 @@ export function calculateReadTime(content: string): string {
   return `${minutes} min read`;
 }
 
+

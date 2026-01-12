@@ -1,133 +1,137 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Grid from '@/components/ui/Grid';
-import ContactForm from '@/components/contact/ContactForm';
-import ContactMethod from '@/components/contact/ContactMethod';
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import ContactQualificationForm from '@/components/contact/ContactQualificationForm';
 
 export default function ContactContent() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center pt-32 pb-16">
-        <Grid />
-        <div className="container-main relative z-10 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="font-kalice text-4xl md:text-5xl lg:text-6xl text-foreground max-w-4xl mx-auto"
-          >
-            Let&apos;s build something serious.
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="text-lg md:text-xl text-foreground/70 mt-6 max-w-2xl mx-auto"
-          >
-            I work with founders and teams building ambitious products.
-          </motion.p>
-        </div>
-      </section>
+    <div className="min-h-screen bg-background">
+      {/* Section 1: Hero (Light) */}
+      <HeroSection />
 
-      {/* Contact Options Section */}
-      <section className="py-16 md:py-24">
-        <div className="container-main">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-            {/* Left Column: Context */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <h2 className="text-xl md:text-2xl font-medium text-foreground mb-6">
-                Who I Work With
-              </h2>
-              <div className="space-y-4 text-foreground/85 leading-relaxed">
-                <p>
-                  I partner with ambitious founders building AI-powered products, growth-stage
-                  companies scaling their platforms, and teams who treat digital products as
-                  strategic assets.
-                </p>
-                <p>
-                  If you&apos;re looking for fast execution, strategic thinking, and someone who
-                  cares about business outcomes as much as craft—let&apos;s talk.
-                </p>
-              </div>
+      {/* Section 2 & 3: Context Setting + Form (Light) */}
+      <FormSection />
 
-              {/* Ideal Projects */}
-              <div className="mt-10">
-                <h3 className="text-sm text-foreground/60 uppercase tracking-wide mb-4">
-                  Ideal for:
-                </h3>
-                <ul className="space-y-3">
-                  {[
-                    'AI-powered product development',
-                    'Growth and conversion optimization',
-                    'Technical SEO and search strategy',
-                    'Full-stack web applications',
-                    'Product design and strategy',
-                  ].map((item, index) => (
-                    <li
-                      key={index}
-                      className="text-foreground/70 pl-4 relative before:content-['—'] before:absolute before:left-0 before:text-foreground/40"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-
-            {/* Right Column: Contact Methods */}
-            <div className="space-y-10">
-              {/* Email */}
-              <ContactMethod label="Email" delay={0.5}>
-                <a
-                  href="mailto:hello@jainamshah.com"
-                  className="text-xl md:text-2xl text-foreground hover:text-accent transition-colors duration-300 underline-offset-4 hover:underline"
-                >
-                  hello@jainamshah.com
-                </a>
-              </ContactMethod>
-
-              {/* Divider */}
-              <div className="border-t border-foreground/[0.08]" />
-
-              {/* Calendar */}
-              <ContactMethod label="Schedule a Call" delay={0.6}>
-                <a
-                  href="https://cal.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block px-8 py-3.5 bg-foreground text-background rounded-md text-base font-medium transition-all duration-300 hover:bg-accent hover:text-foreground"
-                >
-                  Book 30 Minutes
-                </a>
-              </ContactMethod>
-
-              {/* Divider */}
-              <div className="border-t border-foreground/[0.08]" />
-
-              {/* Contact Form */}
-              <ContactForm />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Response Expectation */}
-      <section className="py-16 bg-foreground/[0.02]">
-        <div className="container-main max-w-3xl text-center">
-          <p className="text-foreground/70 leading-relaxed">
-            I review every message personally and typically respond within 24-48 hours. If
-            we&apos;re a good fit, I&apos;ll propose a discovery call to discuss your project in
-            detail.
-          </p>
-        </div>
-      </section>
+      {/* Section 4: Optional Direct Channel (Dark) */}
+      <DirectChannelSection />
     </div>
   );
 }
 
+// ============================================
+// SECTION 1: HERO
+// ============================================
+
+function HeroSection() {
+  return (
+    <section className="bg-background pt-32 pb-16 md:pt-40 md:pb-20">
+      <div className="max-w-[800px] mx-auto px-6 md:px-8 text-center">
+        {/* Main Headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="font-kalice text-2xl md:text-3xl lg:text-[40px] text-foreground leading-[1.3] mb-5"
+        >
+          Let&apos;s build something that wins.
+        </motion.h1>
+
+        {/* Subline */}
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="font-neue text-sm md:text-base text-foreground/70 leading-[1.7] max-w-[600px] mx-auto"
+        >
+          Tell me a bit about your product, your goals, and where you want to go. If it looks like a strong fit, we&apos;ll take it forward.
+        </motion.p>
+      </div>
+    </section>
+  );
+}
+
+// ============================================
+// SECTION 2 & 3: CONTEXT + FORM
+// ============================================
+
+function FormSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-10%' });
+
+  return (
+    <section className="bg-background py-4 md:py-6" ref={ref}>
+      <div className="max-w-[700px] mx-auto px-6 md:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <ContactQualificationForm />
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================
+// SECTION 4: DIRECT CHANNEL
+// ============================================
+
+function DirectChannelSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-15%' });
+
+  return (
+    <section className="bg-foreground py-20 md:py-24" ref={ref}>
+      <div className="max-w-[800px] mx-auto px-6 md:px-8 text-center">
+        {/* Text */}
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="font-neue text-sm md:text-base text-background/80 mb-6"
+        >
+          Prefer a direct intro?
+        </motion.p>
+
+        {/* Contact Options */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col items-center gap-4"
+        >
+          {/* Email Link */}
+          <a
+            href="mailto:hello@jainamshah.com"
+            className="font-neue text-base text-accent hover:underline underline-offset-4 transition-all duration-300"
+          >
+            hello@jainamshah.com
+          </a>
+
+          {/* Social Links */}
+          <div className="flex items-center gap-6">
+            <a
+              href="https://linkedin.com/in/jainamshah"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-neue text-sm text-background/80 hover:text-accent transition-colors duration-300"
+            >
+              LinkedIn
+            </a>
+            <span className="text-background/30">•</span>
+            <a
+              href="https://twitter.com/jainamshah"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-neue text-sm text-background/80 hover:text-accent transition-colors duration-300"
+            >
+              X / Twitter
+            </a>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

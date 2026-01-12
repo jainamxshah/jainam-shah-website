@@ -11,7 +11,7 @@ interface ArticleContentProps {
   article: Article;
 }
 
-// Simple markdown-like parser for the article content
+// Premium markdown-like parser for the article content
 function parseContent(content: string) {
   const lines = content.split('\n');
   const elements: ReactElement[] = [];
@@ -24,7 +24,7 @@ function parseContent(content: string) {
       elements.push(
         <blockquote
           key={key++}
-          className="border-l-4 border-accent pl-8 my-12 italic text-foreground/85 text-lg md:text-xl"
+          className="border-l-4 border-accent pl-8 my-12 italic text-foreground/85 text-lg md:text-xl leading-[1.7]"
         >
           {blockquoteContent.join(' ')}
         </blockquote>
@@ -46,12 +46,12 @@ function parseContent(content: string) {
       flushBlockquote();
     }
 
-    // H2
+    // H2 - Major section headings
     if (line.startsWith('## ')) {
       elements.push(
         <h2
           key={key++}
-          className="text-2xl md:text-3xl font-medium text-foreground mt-16 mb-6 pt-8 border-t border-foreground/[0.08]"
+          className="font-neue text-2xl md:text-[32px] font-medium text-foreground mt-16 mb-6 pt-8 border-t border-foreground/8"
         >
           {line.slice(3)}
         </h2>
@@ -59,21 +59,21 @@ function parseContent(content: string) {
       continue;
     }
 
-    // H3
+    // H3 - Sub-section headings
     if (line.startsWith('### ')) {
       elements.push(
-        <h3 key={key++} className="text-xl md:text-2xl font-medium text-foreground mt-12 mb-4">
+        <h3 key={key++} className="font-neue text-xl md:text-2xl font-medium text-foreground mt-12 mb-4">
           {line.slice(4)}
         </h3>
       );
       continue;
     }
 
-    // List item
+    // Unordered list item
     if (line.startsWith('- ')) {
       elements.push(
-        <li key={key++} className="text-foreground/85 leading-relaxed ml-6 mb-2">
-          {line.slice(2)}
+        <li key={key++} className="font-neue text-foreground text-lg leading-[1.7] ml-6 mb-3 list-disc">
+          {processInlineFormatting(line.slice(2))}
         </li>
       );
       continue;
@@ -83,8 +83,8 @@ function parseContent(content: string) {
     if (/^\d+\. /.test(line)) {
       const text = line.replace(/^\d+\. /, '');
       elements.push(
-        <li key={key++} className="text-foreground/85 leading-relaxed ml-6 mb-2 list-decimal">
-          {text}
+        <li key={key++} className="font-neue text-foreground text-lg leading-[1.7] ml-6 mb-3 list-decimal">
+          {processInlineFormatting(text)}
         </li>
       );
       continue;
@@ -95,30 +95,10 @@ function parseContent(content: string) {
       continue;
     }
 
-    // Bold text handling
-    const processedLine = line;
-    if (line.includes('**')) {
-      const parts = line.split(/\*\*(.*?)\*\*/g);
-      elements.push(
-        <p key={key++} className="text-base md:text-lg text-foreground leading-relaxed mb-6">
-          {parts.map((part, idx) =>
-            idx % 2 === 1 ? (
-              <strong key={idx} className="font-semibold">
-                {part}
-              </strong>
-            ) : (
-              part
-            )
-          )}
-        </p>
-      );
-      continue;
-    }
-
-    // Regular paragraph
+    // Regular paragraph with inline formatting
     elements.push(
-      <p key={key++} className="text-base md:text-lg text-foreground leading-relaxed mb-6">
-        {processedLine}
+      <p key={key++} className="font-neue text-lg text-foreground leading-[1.8] mb-6">
+        {processInlineFormatting(line)}
       </p>
     );
   }
@@ -129,13 +109,35 @@ function parseContent(content: string) {
   return elements;
 }
 
+// Process inline formatting (bold, links)
+function processInlineFormatting(text: string): ReactElement | string {
+  // Handle bold text
+  if (text.includes('**')) {
+    const parts = text.split(/\*\*(.*?)\*\*/g);
+    return (
+      <>
+        {parts.map((part, idx) =>
+          idx % 2 === 1 ? (
+            <strong key={idx} className="font-semibold">
+              {part}
+            </strong>
+          ) : (
+            part
+          )
+        )}
+      </>
+    );
+  }
+  return text;
+}
+
 export default function ArticleContent({ article }: ArticleContentProps) {
   const headerRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: true });
 
   return (
-    <article className="min-h-screen pt-32 pb-24 md:pt-40 md:pb-32">
-      <div className="max-w-3xl mx-auto px-6 md:px-8">
+    <article className="min-h-screen bg-background pt-32 pb-24 md:pt-40 md:pb-32">
+      <div className="max-w-[750px] mx-auto px-6 md:px-12">
         {/* Article Header */}
         <motion.header
           ref={headerRef}
@@ -144,20 +146,20 @@ export default function ArticleContent({ article }: ArticleContentProps) {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mb-12 md:mb-16"
         >
-          {/* Category */}
-          <span className="text-xs text-accent uppercase tracking-widest font-medium mb-4 block">
+          {/* Category Badge */}
+          <span className="inline-block bg-accent text-foreground px-4 py-1.5 rounded text-xs font-neue uppercase tracking-[0.1em] mb-4">
             {article.category}
           </span>
 
           {/* Title */}
-          <h1 className="font-kalice text-3xl md:text-4xl lg:text-5xl text-foreground leading-tight mb-6">
+          <h1 className="font-kalice text-3xl md:text-[48px] lg:text-[64px] text-foreground leading-[1.2] mb-6">
             {article.title}
           </h1>
 
-          {/* Metadata */}
-          <div className="flex items-center gap-6 text-sm text-foreground/60">
+          {/* Meta Row */}
+          <div className="flex items-center gap-6 font-neue text-sm text-foreground/60">
             <span>{formatDate(article.date)}</span>
-            <span>|</span>
+            <span className="text-foreground/30">|</span>
             <span>{article.readTime}</span>
           </div>
         </motion.header>
@@ -196,7 +198,7 @@ export default function ArticleContent({ article }: ArticleContentProps) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="prose prose-lg max-w-none"
+          className="article-body"
         >
           {parseContent(article.content)}
         </motion.div>
@@ -206,11 +208,11 @@ export default function ArticleContent({ article }: ArticleContentProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-24 pt-12 border-t border-foreground/[0.08]"
+          className="mt-24 pt-12 border-t border-foreground/8"
         >
           <Link
             href="/insights"
-            className="inline-flex items-center text-base text-foreground hover:text-accent transition-colors duration-300 group"
+            className="inline-flex items-center font-neue text-base text-foreground hover:text-accent transition-colors duration-300 group"
           >
             <svg
               className="mr-2 w-4 h-4 transform group-hover:-translate-x-1 transition-transform duration-300"
@@ -232,4 +234,3 @@ export default function ArticleContent({ article }: ArticleContentProps) {
     </article>
   );
 }
-

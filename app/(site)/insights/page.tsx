@@ -3,12 +3,12 @@ import { getAllArticles } from '@/lib/articles';
 import InsightsContent from './InsightsContent';
 
 export const metadata: Metadata = {
-  title: 'Insights | Jainam Shah',
+  title: 'Insights – Jainam Shah',
   description:
-    'Thoughts on AI, product development, and growth strategy from an engineer building products that win.',
+    'Essays and frameworks on AI, product strategy, and building software that scales.',
   openGraph: {
-    title: 'Insights | Jainam Shah',
-    description: 'Thoughts on AI, product development, and growth strategy.',
+    title: 'Insights – Jainam Shah',
+    description: 'Essays and frameworks on AI, product strategy, and building software that scales.',
     type: 'website',
   },
 };

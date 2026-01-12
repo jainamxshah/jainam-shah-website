@@ -92,3 +92,4 @@ export function startScroll(): void {
   lenisInstance?.start();
 }
 
+

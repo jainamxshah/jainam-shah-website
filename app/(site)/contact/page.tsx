@@ -2,12 +2,12 @@ import { Metadata } from 'next';
 import ContactContent from './ContactContent';
 
 export const metadata: Metadata = {
-  title: 'Contact | Jainam Shah',
+  title: 'Start a Project – Jainam Shah',
   description:
-    "Let's build something serious. I work with founders and teams building ambitious AI-powered products.",
+    "Let's build something that wins. Get in touch to discuss your product.",
   openGraph: {
-    title: 'Contact | Jainam Shah',
-    description: "Let's build something serious.",
+    title: 'Start a Project – Jainam Shah',
+    description: "Let's build something that wins. Get in touch to discuss your product.",
     type: 'website',
   },
 };
