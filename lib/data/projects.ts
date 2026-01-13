@@ -30,6 +30,9 @@ type DbProject = {
   workPageOutcome?: string | null;
 };
 
+type PrismaProject = Awaited<ReturnType<typeof prisma.project.findMany>>[number];
+type PrismaProjectSlug = { slug: string };
+
 export async function getAllProjects(): Promise<Project[]> {
   if (USE_DATABASE) {
     try {
@@ -39,7 +42,7 @@ export async function getAllProjects(): Promise<Project[]> {
       });
 
       // Transform database projects to match the Project interface
-      return dbProjects.map((p) => {
+      return dbProjects.map((p: PrismaProject) => {
         const dbProject = p as unknown as DbProject;
         return {
           id: p.id,
@@ -125,7 +128,7 @@ export async function getProjectSlugs(): Promise<string[]> {
         where: { published: true },
         select: { slug: true },
       });
-      return projects.map((p) => p.slug);
+      return projects.map((p: PrismaProjectSlug) => p.slug);
     } catch (error) {
       console.error('Error fetching project slugs from database:', error);
       return staticProjects.map((p) => p.slug);

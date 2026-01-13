@@ -4,6 +4,9 @@ import { articles as staticArticles, type Article } from '@/lib/articles';
 // Use database when available, fallback to static data
 const USE_DATABASE = true;
 
+type DbArticle = Awaited<ReturnType<typeof prisma.article.findMany>>[number];
+type DbArticleSlug = { slug: string };
+
 export async function getAllArticles(): Promise<Article[]> {
   if (USE_DATABASE) {
     try {
@@ -12,7 +15,7 @@ export async function getAllArticles(): Promise<Article[]> {
         orderBy: { publishedAt: 'desc' },
       });
 
-      return dbArticles.map((a) => ({
+      return dbArticles.map((a: DbArticle) => ({
         id: a.id,
         slug: a.slug,
         title: a.title,
@@ -84,7 +87,7 @@ export async function getArticleSlugs(): Promise<string[]> {
         where: { published: true },
         select: { slug: true },
       });
-      return articles.map((a) => a.slug);
+      return articles.map((a: DbArticleSlug) => a.slug);
     } catch (error) {
       console.error('Error fetching article slugs from database:', error);
       return staticArticles.map((a) => a.slug);
