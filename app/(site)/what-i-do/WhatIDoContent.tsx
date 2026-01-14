@@ -23,16 +23,10 @@ export default function WhatIDoContent() {
       {/* Section 4: What Happens When You Hire Me (Dark) */}
       <WhatHappens />
 
-      {/* Section 5: What I Actually Build (Light) */}
-      <WhatIBuild />
-
-      {/* Section 6: What Changes (Dark) */}
-      <WhatChanges />
-
-      {/* Section 7: Philosophy (Light) */}
+      {/* Section 5: Philosophy (Light) */}
       <PhilosophySection />
 
-      {/* Section 8: Call to Action (Dark) */}
+      {/* Section 6: Call to Action (Dark) */}
       <CallToActionSection />
     </div>
   );
@@ -45,41 +39,13 @@ export default function WhatIDoContent() {
 function HeroSection() {
   return (
     <section className="bg-background min-h-screen flex items-center justify-center pt-20 pb-20 relative overflow-hidden">
-      {/* Floating Diagram Background */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-          animate={{ opacity: 0.04, scale: 1, rotate: 0 }}
-          transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-          className="w-[600px] md:w-[800px] lg:w-[1000px] aspect-square"
-        >
-          <svg viewBox="0 0 400 400" className="w-full h-full">
-            {/* Outer Circle */}
-            <circle cx="200" cy="200" r="180" fill="none" stroke="currentColor" strokeWidth="1" className="text-foreground" />
-            {/* Inner Circles */}
-            <circle cx="200" cy="200" r="120" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-foreground" />
-            <circle cx="200" cy="200" r="60" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-foreground" />
-            {/* Connecting Lines */}
-            <line x1="200" y1="20" x2="200" y2="380" stroke="currentColor" strokeWidth="0.5" className="text-foreground" />
-            <line x1="20" y1="200" x2="380" y2="200" stroke="currentColor" strokeWidth="0.5" className="text-foreground" />
-            <line x1="60" y1="60" x2="340" y2="340" stroke="currentColor" strokeWidth="0.5" className="text-foreground" />
-            <line x1="340" y1="60" x2="60" y2="340" stroke="currentColor" strokeWidth="0.5" className="text-foreground" />
-            {/* Nodes */}
-            <circle cx="200" cy="20" r="8" className="fill-foreground" />
-            <circle cx="200" cy="380" r="8" className="fill-foreground" />
-            <circle cx="20" cy="200" r="8" className="fill-foreground" />
-            <circle cx="380" cy="200" r="8" className="fill-foreground" />
-          </svg>
-        </motion.div>
-      </div>
-
       <div className="max-w-[1100px] mx-auto px-6 md:px-8 text-center relative z-10">
         {/* Main Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="font-kalice text-3xl md:text-4xl lg:text-[56px] xl:text-[64px] text-foreground leading-[1.15] tracking-[-0.02em] mb-8"
+          className="font-kalice text-[28px] md:text-[36px] lg:text-[44px] text-foreground leading-[1.3] tracking-[-0.01em] mb-8"
         >
           I don&apos;t deliver features.
           <br />
@@ -91,7 +57,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="font-neue text-base md:text-lg lg:text-xl text-foreground/70 leading-[1.7] max-w-[700px] mx-auto mb-12"
+          className="font-neue text-sm md:text-base text-foreground/60 leading-[1.6] max-w-[700px] mx-auto mb-12"
         >
           I partner with founders and teams to design AI-powered products that grow, learn, and scale on their own.
         </motion.p>
@@ -135,32 +101,42 @@ function JainamLoopSection() {
   const isInView = useInView(ref, { once: true, margin: '-10%' });
 
   return (
-    <section className="bg-foreground py-24 md:py-32 lg:py-40" ref={ref}>
+    <section className="bg-foreground py-2 md:py-4 lg:py-8" ref={ref}>
       <div className="max-w-[1400px] mx-auto px-6 md:px-8 lg:px-12">
-        {/* Section Title */}
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="font-kalice text-2xl md:text-3xl lg:text-[40px] text-background text-center mb-6"
-        >
-          The Jainam Loop
-        </motion.h2>
-
         {/* Central Diagram */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="relative w-full max-w-[500px] md:max-w-[600px] lg:max-w-[700px] mx-auto aspect-square my-12"
+          className="relative w-full max-w-[500px] md:max-w-[600px] lg:max-w-[700px] mx-auto aspect-square"
         >
+          {/* Section Title - Centered in circle */}
+          <motion.h2
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute inset-0 flex items-center justify-center font-kalice text-xl md:text-2xl lg:text-[28px] text-background text-center z-10 pointer-events-none"
+          >
+            The Jainam Loop
+          </motion.h2>
           {/* Circular Path */}
-          <svg viewBox="0 0 400 400" className="w-full h-full">
+          <motion.svg 
+            viewBox="0 0 400 400" 
+            className="w-full h-full"
+            style={{ transformOrigin: 'center center' }}
+            animate={{ rotate: 360 }}
+            transition={{ 
+              duration: 30, 
+              repeat: Infinity, 
+              ease: "linear",
+              delay: 2
+            }}
+          >
             {/* Main Circle */}
             <motion.circle
               cx="200"
               cy="200"
-              r="150"
+              r="130"
               fill="none"
               stroke="rgba(249, 226, 145, 0.3)"
               strokeWidth="2"
@@ -178,7 +154,7 @@ function JainamLoopSection() {
             
             {/* Curved arrows */}
             <motion.path
-              d="M 200 50 A 150 150 0 0 1 325 125"
+              d="M 200 70 A 130 130 0 0 1 292 112"
               fill="none"
               stroke="rgba(249, 226, 145, 0.4)"
               strokeWidth="1.5"
@@ -188,7 +164,7 @@ function JainamLoopSection() {
               transition={{ duration: 0.4, delay: 0.8 }}
             />
             <motion.path
-              d="M 325 125 A 150 150 0 0 1 325 275"
+              d="M 292 112 A 130 130 0 0 1 292 288"
               fill="none"
               stroke="rgba(249, 226, 145, 0.4)"
               strokeWidth="1.5"
@@ -198,7 +174,7 @@ function JainamLoopSection() {
               transition={{ duration: 0.4, delay: 1.0 }}
             />
             <motion.path
-              d="M 325 275 A 150 150 0 0 1 200 350"
+              d="M 292 288 A 130 130 0 0 1 200 330"
               fill="none"
               stroke="rgba(249, 226, 145, 0.4)"
               strokeWidth="1.5"
@@ -208,7 +184,7 @@ function JainamLoopSection() {
               transition={{ duration: 0.4, delay: 1.2 }}
             />
             <motion.path
-              d="M 200 350 A 150 150 0 0 1 75 275"
+              d="M 200 330 A 130 130 0 0 1 108 288"
               fill="none"
               stroke="rgba(249, 226, 145, 0.4)"
               strokeWidth="1.5"
@@ -218,7 +194,7 @@ function JainamLoopSection() {
               transition={{ duration: 0.4, delay: 1.4 }}
             />
             <motion.path
-              d="M 75 275 A 150 150 0 0 1 75 125"
+              d="M 108 288 A 130 130 0 0 1 108 112"
               fill="none"
               stroke="rgba(249, 226, 145, 0.4)"
               strokeWidth="1.5"
@@ -228,7 +204,7 @@ function JainamLoopSection() {
               transition={{ duration: 0.4, delay: 1.6 }}
             />
             <motion.path
-              d="M 75 125 A 150 150 0 0 1 200 50"
+              d="M 108 112 A 130 130 0 0 1 200 70"
               fill="none"
               stroke="rgba(249, 226, 145, 0.4)"
               strokeWidth="1.5"
@@ -237,14 +213,24 @@ function JainamLoopSection() {
               animate={isInView ? { pathLength: 1 } : {}}
               transition={{ duration: 0.4, delay: 1.8 }}
             />
-          </svg>
+          </motion.svg>
 
           {/* Loop Labels */}
           {loopSteps.map((step, index) => {
-            const radius = 150;
+            const svgCenter = 180; // Center of 400x400 viewBox
+            const mainRadius = 110;
+            // Position box centers outside the circle so inner edge touches circle
+            // Estimate box width ~20-25 SVG units, so center should be ~12 units outside circle
+            const boxOffset = 12; // Distance from circle edge to box center
+            const labelRadius = mainRadius + boxOffset;
             const angleRad = (step.angle * Math.PI) / 180;
-            const x = 50 + (50 + (radius / 2) * Math.cos(angleRad));
-            const y = 50 + (50 + (radius / 2) * Math.sin(angleRad));
+            // Calculate position in SVG coordinates (0-400)
+            // In SVG, y increases downward, so sin works correctly for standard angles
+            const svgX = svgCenter + labelRadius * Math.cos(angleRad);
+            const svgY = svgCenter + labelRadius * Math.sin(angleRad);
+            // Convert to percentage for absolute positioning
+            const x = (svgX / 410) * 100;
+            const y = (svgY / 390) * 100;
 
             return (
               <motion.div
@@ -263,18 +249,6 @@ function JainamLoopSection() {
               </motion.div>
             );
           })}
-
-          {/* Center Icon */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.6, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          >
-            <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-accent flex items-center justify-center">
-              <span className="text-foreground text-xl md:text-2xl">↺</span>
-            </div>
-          </motion.div>
         </motion.div>
 
         {/* Description */}
@@ -282,7 +256,7 @@ function JainamLoopSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="font-neue text-base md:text-lg text-background/80 text-center max-w-[600px] mx-auto leading-[1.7]"
+          className="font-neue text-base md:text-lg text-background/80 text-center max-w-[600px] mx-auto leading-[1.7] mb-12"
         >
           This is the loop I design for every product.
           <br />
@@ -336,7 +310,7 @@ function WhereIPlugIn() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="font-kalice text-2xl md:text-3xl lg:text-[40px] text-foreground text-center mb-14 md:mb-20"
+          className="font-kalice text-xl md:text-2xl lg:text-[28px] text-foreground text-center mb-14 md:mb-20"
         >
           Where I Plug In
         </motion.h2>
@@ -359,7 +333,7 @@ function WhereIPlugIn() {
 
               {/* Content */}
               <div className="relative z-10">
-                <h3 className="font-kalice text-xl md:text-2xl lg:text-[28px] text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
+                <h3 className="font-kalice text-lg md:text-xl lg:text-[22px] text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
                   {area.title}
                 </h3>
                 <p className="font-neue text-sm md:text-base text-foreground/70 leading-[1.6]">
@@ -425,45 +399,39 @@ function WhatHappens() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="font-kalice text-2xl md:text-3xl lg:text-[40px] text-background text-center mb-14 md:mb-20"
+          className="font-kalice text-xl md:text-2xl lg:text-[28px] text-background text-center mb-14 md:mb-20"
         >
           What Happens When You Hire Me
         </motion.h2>
 
         {/* Timeline Strip */}
-        <div className="relative">
-          {/* Connecting Line (Desktop) */}
+        <div className="relative pt-12 pb-8">
+          {/* Horizontal Timeline Line */}
           <motion.div
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="hidden lg:block absolute top-12 left-[12%] right-[12%] h-[2px] bg-gradient-to-r from-accent/20 via-accent/60 to-accent/20 origin-left"
+            className="absolute top-12 left-0 right-0 h-[2px] bg-accent origin-left"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+          {/* Timeline Steps */}
+          <div className="relative flex flex-col md:flex-row justify-between gap-8 md:gap-4 lg:gap-8">
             {timelineSteps.map((step, index) => (
               <motion.div
                 key={step.number}
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.2 + index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-                className="relative text-center lg:text-left"
+                className="relative flex-1 text-center"
               >
-                {/* Step Number Circle */}
-                <div className="flex justify-center lg:justify-start mb-5">
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-accent/20 border-2 border-accent flex items-center justify-center relative z-10">
-                    <span className="font-neue text-xs md:text-sm font-bold text-accent">
+                {/* Step Number Circle - positioned on the line */}
+                <div className="flex justify-center mb-5 relative z-10">
+                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-foreground border-2 border-accent flex items-center justify-center -mt-6">
+                    <span className="font-neue text-sm md:text-base font-bold text-accent">
                       {step.number}
                     </span>
                   </div>
                 </div>
-
-                {/* Arrow (Mobile/Tablet) */}
-                {index < timelineSteps.length - 1 && (
-                  <div className="hidden md:block lg:hidden absolute -bottom-4 left-1/2 transform -translate-x-1/2">
-                    <span className="text-accent/50 text-2xl">↓</span>
-                  </div>
-                )}
 
                 {/* Title */}
                 <h3 className="font-kalice text-lg md:text-xl text-background mb-2">
@@ -471,7 +439,7 @@ function WhatHappens() {
                 </h3>
 
                 {/* Description */}
-                <p className="font-neue text-sm text-background/65 leading-[1.6] max-w-[250px] mx-auto lg:mx-0">
+                <p className="font-neue text-sm text-background/65 leading-[1.6]">
                   {step.description}
                 </p>
               </motion.div>
@@ -484,184 +452,7 @@ function WhatHappens() {
 }
 
 // ============================================
-// SECTION 5: WHAT I ACTUALLY BUILD
-// ============================================
-
-const buildCards = [
-  {
-    title: 'Growth Engines',
-    description: 'SEO, programmatic pages, content systems, acquisition loops',
-    icon: '⚡',
-  },
-  {
-    title: 'AI Infrastructure',
-    description: 'LLMs, RAG, pipelines, automation, intelligence layers',
-    icon: '🧠',
-  },
-  {
-    title: 'Product Experiences',
-    description: 'Dashboards, workflows, onboarding, trust, conversion',
-    icon: '✨',
-  },
-  {
-    title: 'Data Loops',
-    description: 'Analytics, feedback, optimization, and learning systems',
-    icon: '🔄',
-  },
-];
-
-function WhatIBuild() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-10%' });
-
-  return (
-    <section className="bg-background py-24 md:py-32" ref={ref}>
-      <div className="max-w-[1400px] mx-auto px-6 md:px-8 lg:px-12">
-        {/* Section Title */}
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="font-kalice text-2xl md:text-3xl lg:text-[40px] text-foreground text-center mb-14 md:mb-20"
-        >
-          What I Actually Build
-        </motion.h2>
-
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {buildCards.map((card, index) => (
-            <motion.div
-              key={card.title}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -4, borderColor: 'rgba(24, 24, 24, 0.2)' }}
-              className="bg-white border border-foreground/8 rounded-2xl p-8 md:p-10 transition-all duration-300 hover:shadow-xl group"
-            >
-              {/* Icon */}
-              <div className="text-3xl md:text-4xl mb-5 group-hover:scale-110 transition-transform duration-300">
-                {card.icon}
-              </div>
-
-              {/* Title */}
-              <h3 className="font-kalice text-lg md:text-xl lg:text-2xl text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
-                {card.title}
-              </h3>
-
-              {/* Description */}
-              <p className="font-neue text-sm md:text-base text-foreground/70 leading-[1.6]">
-                {card.description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================
-// SECTION 6: WHAT CHANGES
-// ============================================
-
-const beforeItems = [
-  'You guess what to build',
-  'Marketing fights product',
-  'AI is a feature',
-  'Growth is manual',
-];
-
-const afterItems = [
-  'You know where to compete',
-  'Product generates demand',
-  'AI becomes leverage',
-  'Growth compounds',
-];
-
-function WhatChanges() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-10%' });
-
-  return (
-    <section className="bg-foreground py-24 md:py-32" ref={ref}>
-      <div className="max-w-[1200px] mx-auto px-6 md:px-8 lg:px-12">
-        {/* Section Title */}
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="font-kalice text-2xl md:text-3xl lg:text-[40px] text-background text-center mb-14 md:mb-20"
-        >
-          What Changes
-        </motion.h2>
-
-        {/* Before / After Split */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0">
-          {/* Before Column */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="md:pr-10 lg:pr-16 md:border-r border-background/15"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-3 h-3 rounded-full bg-red-400/70" />
-              <h3 className="font-neue text-lg md:text-xl font-semibold text-background/60 uppercase tracking-wider">
-                Before
-              </h3>
-            </div>
-            <ul className="space-y-4">
-              {beforeItems.map((item, index) => (
-                <motion.li
-                  key={item}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  className="font-neue text-base md:text-lg text-background/55 flex items-start gap-3"
-                >
-                  <span className="text-background/30 mt-1">–</span>
-                  {item}
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* After Column */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="md:pl-10 lg:pl-16"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-3 h-3 rounded-full bg-accent" />
-              <h3 className="font-neue text-lg md:text-xl font-semibold text-accent uppercase tracking-wider">
-                After
-              </h3>
-            </div>
-            <ul className="space-y-4">
-              {afterItems.map((item, index) => (
-                <motion.li
-                  key={item}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                  className="font-neue text-base md:text-lg text-background flex items-start gap-3"
-                >
-                  <span className="text-accent mt-1">✓</span>
-                  {item}
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================
-// SECTION 7: PHILOSOPHY
+// SECTION 5: PHILOSOPHY
 // ============================================
 
 function PhilosophySection() {
@@ -669,14 +460,14 @@ function PhilosophySection() {
   const isInView = useInView(ref, { once: true, margin: '-15%' });
 
   return (
-    <section className="bg-background py-24 md:py-32 lg:py-40" ref={ref}>
+    <section className="bg-foreground py-24 md:py-32 lg:py-40" ref={ref}>
       <div className="max-w-[1000px] mx-auto px-6 md:px-8 lg:px-12 text-center">
         {/* Decorative Quote Mark */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-6"
+          className="mb-4"
         >
           <span className="font-kalice text-[60px] md:text-[80px] lg:text-[100px] text-accent leading-none select-none">
             &quot;
@@ -688,11 +479,11 @@ function PhilosophySection() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="font-kalice text-xl md:text-2xl lg:text-[36px] xl:text-[40px] text-foreground leading-[1.35] tracking-[-0.01em]"
+          className="font-kalice text-xl md:text-2xl lg:text-[32px] text-background leading-[1.4]"
         >
           Most startups fail because they build things.
           <br />
-          <span className="text-foreground/70">I help teams build systems.</span>
+          <span className="text-background/70">I help teams build systems.</span>
         </motion.blockquote>
 
         {/* Closing Quote */}
@@ -700,7 +491,7 @@ function PhilosophySection() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6"
+          className="mt-4"
         >
           <span className="font-kalice text-[60px] md:text-[80px] lg:text-[100px] text-accent leading-none select-none rotate-180 inline-block">
             &quot;
@@ -712,7 +503,7 @@ function PhilosophySection() {
 }
 
 // ============================================
-// SECTION 8: CALL TO ACTION
+// SECTION 6: CALL TO ACTION
 // ============================================
 
 function CallToActionSection() {
@@ -720,14 +511,14 @@ function CallToActionSection() {
   const isInView = useInView(ref, { once: true, margin: '-15%' });
 
   return (
-    <section className="bg-foreground py-24 md:py-32 lg:py-40" ref={ref}>
+    <section className="bg-background py-24 md:py-32 lg:py-40" ref={ref}>
       <div className="max-w-[900px] mx-auto px-6 md:px-8 lg:px-12 text-center">
         {/* Headline */}
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="font-kalice text-2xl md:text-3xl lg:text-[40px] xl:text-[48px] text-background leading-[1.25] mb-12"
+          className="font-kalice text-xl md:text-2xl lg:text-[28px] text-foreground leading-[1.3] mb-12"
         >
           Ready to install a growth engine into your product?
         </motion.h2>

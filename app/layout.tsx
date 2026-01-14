@@ -75,9 +75,9 @@ const personSchema = {
   description: 'Building AI-powered products that win',
   url: siteUrl,
   sameAs: [
-    'https://linkedin.com/in/jainamshah',
-    'https://github.com/jainamshah',
-    'https://twitter.com/jainamshah',
+    'https://linkedin.com/in/jainam-shah-aiml-ahmedabad',
+    'https://github.com/jainamxshah',
+    'https://twitter.com/jainamxshahh',
   ],
   knowsAbout: [
     'Artificial Intelligence',

@@ -79,7 +79,7 @@ export default function ContactQualificationForm() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="backdrop-blur-xl bg-foreground/20 border border-foreground/20 rounded-2xl p-8 text-center shadow-lg"
+        className="bg-foreground/5 border border-foreground/15 rounded-xl p-8 text-center"
       >
         <h3 className="font-neue text-sm font-medium text-foreground mb-2">
           Thanks — I&apos;ll review this personally.
@@ -92,14 +92,14 @@ export default function ContactQualificationForm() {
   }
 
   return (
-    <div className="backdrop-blur-xl bg-foreground/20 border border-foreground/20 rounded-2xl p-6 md:p-8 shadow-lg">
-      <form onSubmit={handleSubmit} className="space-y-5">
-        {/* Name and Email Side by Side */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div className="p-6 md:p-8 lg:p-10">
+      <form onSubmit={handleSubmit} className="space-y-8 max-w-2xl">
+        {/* Name and Email in Two Columns at Top */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {/* Field 1: Name */}
           <div>
-            <label htmlFor="name" className="block font-neue text-xs text-foreground/50 mb-1.5">
-              Name <span className="text-foreground/30">*</span>
+            <label htmlFor="name" className="block font-neue text-xs text-foreground/60 mb-2 uppercase tracking-wide">
+              Name <span className="text-foreground/40">*</span>
             </label>
             <input
               type="text"
@@ -109,8 +109,8 @@ export default function ContactQualificationForm() {
               value={formData.name}
               onChange={handleChange}
               required
-              className={`w-full font-neue text-sm px-3 py-2.5 bg-foreground/10 backdrop-blur-sm border-b text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-foreground transition-colors duration-200 ${
-                errors.name ? 'border-red-400' : 'border-foreground/20'
+              className={`w-full font-neue text-sm px-0 py-3 bg-transparent border-0 border-b border-foreground/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-foreground transition-all duration-200 ${
+                errors.name ? 'border-red-400' : ''
               }`}
             />
             {errors.name && (
@@ -120,8 +120,8 @@ export default function ContactQualificationForm() {
 
           {/* Field 2: Email */}
           <div>
-            <label htmlFor="email" className="block font-neue text-xs text-foreground/50 mb-1.5">
-              Email <span className="text-foreground/30">*</span>
+            <label htmlFor="email" className="block font-neue text-xs text-foreground/60 mb-2 uppercase tracking-wide">
+              Email <span className="text-foreground/40">*</span>
             </label>
             <input
               type="email"
@@ -131,8 +131,8 @@ export default function ContactQualificationForm() {
               value={formData.email}
               onChange={handleChange}
               required
-              className={`w-full font-neue text-sm px-3 py-2.5 bg-foreground/10 backdrop-blur-sm border-b text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-foreground transition-colors duration-200 ${
-                errors.email ? 'border-red-400' : 'border-foreground/20'
+              className={`w-full font-neue text-sm px-0 py-3 bg-transparent border-0 border-b border-foreground/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-foreground transition-all duration-200 ${
+                errors.email ? 'border-red-400' : ''
               }`}
             />
             {errors.email && (
@@ -141,10 +141,10 @@ export default function ContactQualificationForm() {
           </div>
         </div>
 
-        {/* Field 3: Message */}
+        {/* Message/Description - Full Width Below */}
         <div>
-          <label htmlFor="message" className="block font-neue text-xs text-foreground/50 mb-1.5">
-            Message <span className="text-foreground/30">*</span>
+          <label htmlFor="message" className="block font-neue text-xs text-foreground/60 mb-2 uppercase tracking-wide">
+            Message <span className="text-foreground/40">*</span>
           </label>
           <textarea
             id="message"
@@ -152,10 +152,10 @@ export default function ContactQualificationForm() {
             placeholder="Tell me about your project..."
             value={formData.message}
             onChange={handleChange}
-            rows={4}
+            rows={6}
             required
-            className={`w-full font-neue text-sm px-3 py-2.5 bg-foreground/10 backdrop-blur-sm border-b text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-foreground transition-colors duration-200 resize-none ${
-              errors.message ? 'border-red-400' : 'border-foreground/20'
+            className={`w-full font-neue text-sm px-0 py-3 bg-transparent border-0 border-b border-foreground/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-foreground transition-all duration-200 resize-y ${
+              errors.message ? 'border-red-400' : ''
             }`}
           />
           {errors.message && (
@@ -180,35 +180,42 @@ export default function ContactQualificationForm() {
         </AnimatePresence>
 
         {/* Submit Button */}
-        <button
-          type="submit"
-          disabled={status === 'submitting'}
-          className="w-full font-neue text-sm font-medium bg-foreground/90 backdrop-blur-sm text-background px-6 py-2.5 rounded-lg hover:bg-foreground transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed mt-6"
-        >
-          {status === 'submitting' ? (
-            <span className="flex items-center justify-center gap-2">
-              <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                  fill="none"
-                />
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                />
-              </svg>
-              Sending...
-            </span>
-          ) : (
-            'Send →'
-          )}
-        </button>
+        <div className="pt-4">
+          <button
+            type="submit"
+            disabled={status === 'submitting'}
+            className="flex items-center justify-center gap-2 font-neue text-sm font-medium bg-foreground text-background px-8 py-3.5 rounded-md hover:bg-foreground/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wide"
+          >
+            {status === 'submitting' ? (
+              <>
+                <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    fill="none"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  />
+                </svg>
+                Sending...
+              </>
+            ) : (
+              <>
+                Submit
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </>
+            )}
+          </button>
+        </div>
       </form>
     </div>
   );

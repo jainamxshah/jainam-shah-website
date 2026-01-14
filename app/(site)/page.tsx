@@ -13,10 +13,10 @@ export default function Home() {
       <Hero />
 
       {/* Section 2: How I Show Up – Operating Principles (Light) */}
-      <HowIShowUp />
+      <ProofStrip />
 
       {/* Section 3: Proof Strip – Where I've Done This (Dark) */}
-      <ProofStrip />
+      <HowIShowUp />
 
       {/* Section 4: Domain Mastery – Where I Operate (Light) */}
       <DomainMastery />

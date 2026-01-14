@@ -32,7 +32,7 @@ export default function Industries() {
   const isInView = useInView(ref, { once: true, margin: '-20% 0px' });
 
   return (
-    <section className="bg-foreground py-20 md:py-24" ref={ref}>
+    <section className="bg-background py-20 md:py-24" ref={ref}>
       <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
         <motion.div
           variants={containerVariants}
@@ -41,23 +41,22 @@ export default function Industries() {
         >
           <motion.h2
             variants={itemVariants}
-            className="font-sans text-2xl md:text-3xl lg:text-4xl font-medium text-background mb-12"
+            className="font-sans text-2xl md:text-3xl lg:text-4xl font-medium text-foreground mb-12"
           >
-            Industries I&apos;ve Worked In
+            I&apos;ve worked with{' '}
+            <span className="text-black">design</span> across{' '}
+            <span className="text-black">various industries</span> and domains.
           </motion.h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 gap-6">
             {industries.map((industry) => (
               <motion.div
                 key={industry.id}
                 variants={itemVariants}
-                className="group bg-background/5 border border-background/10 rounded-xl p-6 md:p-8 hover:border-accent hover:bg-accent/5 transition-colors duration-300"
+                className="bg-gray-100 rounded-lg p-6"
               >
-                <h3 className="font-sans text-lg md:text-xl font-medium text-background mb-2 group-hover:text-accent transition-colors duration-300">
-                  {industry.name}
-                </h3>
-                <p className="font-sans text-sm text-background/70 leading-relaxed">
-                  {industry.description}
+                <p className="font-sans text-sm md:text-base text-black leading-relaxed">
+                  {industry.name}, {industry.description.toLowerCase()}
                 </p>
               </motion.div>
             ))}

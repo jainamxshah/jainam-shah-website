@@ -41,6 +41,17 @@ export default function Philosophy() {
         >
           I design and engineer products that survive contact with reality.
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-4"
+        >
+          <span className="font-kalice text-[48px] md:text-[64px] lg:text-[80px] text-accent leading-none select-none">
+            &quot;
+          </span>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,17 +1,53 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring, animate } from 'framer-motion';
 import Image from 'next/image';
-import Grid from '@/components/ui/Grid';
-
-const trustProducts = ['Surfgeo', 'Nexus AI', 'Quantflow', 'Aura Health', 'Voxel Commerce'];
 
 export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-      {/* Grid Background */}
-      <Grid />
+      {/* Floating Diagram Background */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+          animate={{ 
+            opacity: 0.04, 
+            scale: 1, 
+            rotate: [0, 360]
+          }}
+          transition={{ 
+            opacity: { duration: 1.5, ease: [0.22, 1, 0.36, 1] },
+            scale: { duration: 1.5, ease: [0.22, 1, 0.36, 1] },
+            rotate: { 
+              duration: 40, 
+              repeat: Infinity, 
+              ease: "linear", 
+              delay: 1.5,
+              times: [0, 1]
+            }
+          }}
+          className="w-[600px] md:w-[800px] lg:w-[1000px] aspect-square"
+        >
+          <svg viewBox="0 0 400 400" className="w-full h-full">
+            {/* Outer Circle */}
+            <circle cx="200" cy="200" r="180" fill="none" stroke="currentColor" strokeWidth="1" className="text-foreground" />
+            {/* Inner Circles */}
+            <circle cx="200" cy="200" r="120" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-foreground" />
+            <circle cx="200" cy="200" r="60" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-foreground" />
+            {/* Connecting Lines */}
+            <line x1="200" y1="20" x2="200" y2="380" stroke="currentColor" strokeWidth="0.5" className="text-foreground" />
+            <line x1="20" y1="200" x2="380" y2="200" stroke="currentColor" strokeWidth="0.5" className="text-foreground" />
+            <line x1="60" y1="60" x2="340" y2="340" stroke="currentColor" strokeWidth="0.5" className="text-foreground" />
+            <line x1="340" y1="60" x2="60" y2="340" stroke="currentColor" strokeWidth="0.5" className="text-foreground" />
+            {/* Nodes */}
+            <circle cx="200" cy="20" r="8" className="fill-foreground" />
+            <circle cx="200" cy="380" r="8" className="fill-foreground" />
+            <circle cx="20" cy="200" r="8" className="fill-foreground" />
+            <circle cx="380" cy="200" r="8" className="fill-foreground" />
+          </svg>
+        </motion.div>
+      </div>
 
       {/* Content */}
       <div className="container-main relative z-10 py-24 md:py-32">
@@ -23,22 +59,7 @@ export default function Hero() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="mb-10"
           >
-            <div className="relative w-24 h-24 md:w-32 md:h-32 mx-auto rounded-full overflow-hidden border border-foreground/10 shadow-xl bg-gradient-to-br from-foreground/5 to-foreground/10">
-              <Image
-                src="/images/profile.jpg"
-                alt="Jainam Shah"
-                fill
-                className="object-cover"
-                priority
-                onError={(e) => {
-                  e.currentTarget.style.opacity = '0';
-                }}
-              />
-              {/* Initials fallback */}
-              <div className="absolute inset-0 flex items-center justify-center text-foreground/50 font-kalice text-xl md:text-2xl">
-                JS
-              </div>
-            </div>
+            <DraggableImage />
           </motion.div>
 
           {/* Main Headline - Two-part styling */}
@@ -71,25 +92,6 @@ export default function Hero() {
           >
             I help founders and teams turn fragile AI ideas into scalable, revenue-generating platforms.
           </motion.p>
-
-          {/* Trust Bar */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-wrap items-center justify-center gap-x-2 md:gap-x-3 gap-y-2"
-          >
-            {trustProducts.map((product, index) => (
-              <span key={product} className="flex items-center">
-                <span className="text-xs md:text-sm text-foreground/50 hover:text-foreground/70 transition-colors duration-300 cursor-default">
-                  {product}
-                </span>
-                {index < trustProducts.length - 1 && (
-                  <span className="ml-2 md:ml-3 text-foreground/25">·</span>
-                )}
-              </span>
-            ))}
-          </motion.div>
         </div>
       </div>
 
@@ -122,5 +124,43 @@ export default function Hero() {
         </motion.div>
       </motion.div>
     </section>
+  );
+}
+
+function DraggableImage() {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const handleDragEnd = () => {
+    // Animate back to center with spring animation
+    animate(x, 0, { type: 'spring', stiffness: 400, damping: 35 });
+    animate(y, 0, { type: 'spring', stiffness: 400, damping: 35 });
+  };
+
+  return (
+    <motion.div
+      drag
+      dragConstraints={{ left: -300, right: 300, top: -300, bottom: 300 }}
+      dragElastic={0.1}
+      dragMomentum={false}
+      onDragEnd={handleDragEnd}
+      style={{ 
+        x, 
+        y,
+      }}
+      whileDrag={{ scale: 1.1, cursor: 'grabbing', zIndex: 50 }}
+      className="relative w-24 h-24 md:w-32 md:h-32 mx-auto rounded-full overflow-hidden border border-foreground/10 shadow-xl bg-gradient-to-br from-foreground/5 to-foreground/10 cursor-grab active:cursor-grabbing"
+    >
+      <Image
+        src="/images/Jainam_Photo.jpg"
+        alt="Jainam Shah"
+        fill
+        className="object-cover pointer-events-none"
+        priority
+        onError={(e) => {
+          e.currentTarget.style.opacity = '0';
+        }}
+      />
+    </motion.div>
   );
 }

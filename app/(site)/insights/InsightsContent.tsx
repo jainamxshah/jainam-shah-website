@@ -259,36 +259,61 @@ function ArticleCard({ article, index }: ArticleCardProps) {
         href={`/insights/${article.slug}`} 
         className="group block py-10 md:py-12 border-b border-foreground/8 hover:bg-foreground/[0.02] transition-colors duration-300 -mx-4 px-4"
       >
-        {/* Category */}
-        <span className="font-neue text-[10px] uppercase tracking-[0.1em] text-foreground/50 mb-2 block">
-          {article.category}
-        </span>
+        <div className="flex flex-col md:flex-row gap-6">
+          {/* Article Image */}
+          <div className="relative w-full md:w-64 lg:w-80 aspect-video md:aspect-[4/3] flex-shrink-0 overflow-hidden rounded-lg bg-foreground/5">
+            {article.featuredImage ? (
+              <Image
+                src={article.featuredImage}
+                alt={article.title}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, 256px"
+                onError={(e) => {
+                  e.currentTarget.style.opacity = '0';
+                }}
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-foreground/10 to-foreground/5 flex items-center justify-center">
+                <span className="text-foreground/20 text-4xl">📝</span>
+              </div>
+            )}
+          </div>
 
-        {/* Article Title */}
-        <h3 className="font-neue text-lg md:text-xl lg:text-2xl font-medium text-foreground mb-2 group-hover:text-accent transition-colors duration-300 leading-[1.3]">
-          {article.title}
-        </h3>
+          {/* Content */}
+          <div className="flex-1">
+            {/* Category */}
+            <span className="font-neue text-[10px] uppercase tracking-[0.1em] text-foreground/50 mb-2 block">
+              {article.category}
+            </span>
 
-        {/* Meta Row */}
-        <div className="flex items-center gap-3 mb-3">
-          <span className="font-neue text-xs text-foreground/50">
-            {formatDate(article.date)}
-          </span>
-          <span className="text-foreground/30">|</span>
-          <span className="font-neue text-xs text-foreground/50">
-            {article.readTime}
-          </span>
+            {/* Article Title */}
+            <h3 className="font-neue text-lg md:text-xl lg:text-2xl font-medium text-foreground mb-2 group-hover:text-accent transition-colors duration-300 leading-[1.3]">
+              {article.title}
+            </h3>
+
+            {/* Meta Row */}
+            <div className="flex items-center gap-3 mb-3">
+              <span className="font-neue text-xs text-foreground/50">
+                {formatDate(article.date)}
+              </span>
+              <span className="text-foreground/30">|</span>
+              <span className="font-neue text-xs text-foreground/50">
+                {article.readTime}
+              </span>
+            </div>
+
+            {/* One-line Thesis */}
+            <p className="font-neue text-sm text-foreground/70 leading-[1.6] line-clamp-2 max-w-[700px]">
+              {article.excerpt}
+            </p>
+
+            {/* Read Link */}
+            <span className="inline-block font-neue text-xs text-foreground/60 mt-3 group-hover:text-accent group-hover:underline underline-offset-4 transition-all duration-300">
+              Read Article →
+            </span>
+          </div>
         </div>
-
-        {/* One-line Thesis */}
-        <p className="font-neue text-sm text-foreground/70 leading-[1.6] line-clamp-2 max-w-[700px]">
-          {article.excerpt}
-        </p>
-
-        {/* Read Link */}
-        <span className="inline-block font-neue text-xs text-foreground/60 mt-3 group-hover:text-accent group-hover:underline underline-offset-4 transition-all duration-300">
-          Read Article →
-        </span>
       </Link>
     </motion.article>
   );

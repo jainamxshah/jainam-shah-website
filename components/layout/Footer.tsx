@@ -11,7 +11,7 @@ const footerLinks = [
 
 const socialLinks = [
   {
-    href: 'https://linkedin.com',
+    href: 'https://linkedin.com/in/jainam-shah-aiml-ahmedabad',
     label: 'LinkedIn',
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -20,7 +20,7 @@ const socialLinks = [
     ),
   },
   {
-    href: 'https://github.com',
+    href: 'https://github.com/jainamxshah',
     label: 'GitHub',
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -29,7 +29,7 @@ const socialLinks = [
     ),
   },
   {
-    href: 'https://twitter.com',
+    href: 'https://twitter.com/jainamxshahh',
     label: 'Twitter',
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
