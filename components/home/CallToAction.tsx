@@ -32,7 +32,7 @@ export default function CallToAction() {
   const isInView = useInView(ref, { once: true, margin: '-20%' });
 
   return (
-    <section className="bg-background py-24 md:py-32" ref={ref}>
+    <section className="bg-background py-24 md:py-32 overflow-hidden" ref={ref} data-header-theme="light">
       <div className="max-w-[800px] mx-auto px-6 md:px-8 lg:px-12 text-center">
         <motion.div
           variants={containerVariants}

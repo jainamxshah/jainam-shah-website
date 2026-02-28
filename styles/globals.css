@@ -4,10 +4,10 @@
 
 @layer base {
   :root {
-    --background: #f0f0f0;
+    --background: #fffbf9;
     --foreground: #191919;
-    --accent: #f9e291;
-    
+    --accent: #d28c3f;
+
     /* Font families */
     --font-kalice: 'Playfair Display', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
     --font-neue-montreal: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -21,6 +21,8 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
   }
 
   /* Lenis smooth scroll styling */
@@ -52,6 +54,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    width: 100%;
   }
 
   /* Light scrollbar styling */
@@ -125,6 +129,7 @@
 
   /* Reduce motion for accessibility */
   @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -156,7 +161,7 @@
 
 @layer components {
   .grid-background {
-    background-image: 
+    background-image:
       linear-gradient(rgba(25, 25, 25, 0.04) 1px, transparent 1px),
       linear-gradient(90deg, rgba(25, 25, 25, 0.04) 1px, transparent 1px);
     background-size: 40px 40px;
@@ -227,6 +232,7 @@
       opacity: 0;
       transform: translateY(20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -237,6 +243,7 @@
     from {
       opacity: 0;
     }
+
     to {
       opacity: 1;
     }
@@ -265,16 +272,16 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
 
   /* Canvas grid for Work page */
   .canvas-grid {
-    background-image: 
-      linear-gradient(rgba(240, 240, 240, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(240, 240, 240, 0.03) 1px, transparent 1px);
+    background-image:
+      linear-gradient(rgba(255, 251, 249, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 251, 249, 0.03) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 
@@ -284,6 +291,7 @@
       opacity: 0;
       transform: translateY(50px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);

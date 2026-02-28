@@ -8,9 +8,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#f0f0f0',
+        background: '#fffbf9',
         foreground: '#191919',
-        accent: '#f9e291',
+        accent: '#d28c3f',
       },
       fontFamily: {
         kalice: ['var(--font-kalice)'],

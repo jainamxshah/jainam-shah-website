@@ -24,7 +24,7 @@ function useScrambleText(text: string, isActive: boolean, delay: number = 0) {
     setIsScrambling(true);
     let iteration = 0;
     const maxIterations = text.length * 1.5; // Reduced from 3 to 1.5
-    
+
     const timeout = setTimeout(() => {
       const interval = setInterval(() => {
         setDisplayText(
@@ -126,14 +126,14 @@ function DesktopCanvasWorkPage({ projects }: WorkPageContentProps) {
   }, [currentSlide, totalSlides, scrollToSlide]);
 
   return (
-    <div className="fixed inset-0 bg-foreground overflow-hidden pt-[72px] z-[50]">
+    <div className="fixed inset-0 bg-foreground overflow-hidden pt-[72px] z-[50]" data-header-theme="dark">
       {/* Canvas Grid Background */}
-      <div 
+      <div
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(240, 240, 240, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(240, 240, 240, 0.03) 1px, transparent 1px)
+            linear-gradient(rgba(255, 251, 249, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 251, 249, 0.03) 1px, transparent 1px)
           `,
           backgroundSize: '40px 40px',
         }}
@@ -147,9 +147,9 @@ function DesktopCanvasWorkPage({ projects }: WorkPageContentProps) {
       >
         {/* Project Slides */}
         {projects.map((project, index) => (
-          <ProjectSlide 
-            key={project.id} 
-            project={project} 
+          <ProjectSlide
+            key={project.id}
+            project={project}
             slideNumber={index + 1}
             isActive={currentSlide === index}
           />
@@ -172,11 +172,10 @@ function DesktopCanvasWorkPage({ projects }: WorkPageContentProps) {
           <button
             key={index}
             onClick={() => scrollToSlide(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              currentSlide === index 
-                ? 'bg-accent w-6' 
-                : 'bg-background/30 hover:bg-background/50'
-            }`}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${currentSlide === index
+              ? 'bg-accent w-6'
+              : 'bg-background/30 hover:bg-background/50'
+              }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
@@ -239,7 +238,7 @@ function ProjectSlide({ project, slideNumber, isActive }: ProjectSlideProps) {
   );
 
   return (
-    <div 
+    <div
       className="flex-shrink-0 w-screen h-full snap-start snap-always"
       style={{ scrollSnapAlign: 'start' }}
     >
@@ -252,13 +251,13 @@ function ProjectSlide({ project, slideNumber, isActive }: ProjectSlideProps) {
           className="flex-shrink-0 w-[100px] lg:w-[140px] flex flex-col justify-center"
         >
           {/* Vertical Project Name */}
-          <h2 
+          <h2
             className="font-kalice text-3xl lg:text-4xl xl:text-5xl text-background tracking-[-0.02em] leading-none"
             style={{ writingMode: 'vertical-rl', textOrientation: 'mixed', transform: 'rotate(180deg)' }}
           >
             {nameText}
           </h2>
-          
+
           {/* Identity Tag */}
           <p className="font-neue text-xs text-background/60 italic mt-3 ml-2">
             {tagText}
@@ -274,7 +273,7 @@ function ProjectSlide({ project, slideNumber, isActive }: ProjectSlideProps) {
         >
           <div className="relative w-full max-w-4xl max-h-[65vh] aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl">
             {/* Gradient placeholder */}
-            <div 
+            <div
               className="absolute inset-0"
               style={{
                 background: `linear-gradient(135deg, 
@@ -282,7 +281,7 @@ function ProjectSlide({ project, slideNumber, isActive }: ProjectSlideProps) {
                   hsl(${(slideNumber * 60 + 40) % 360}, 25%, 18%) 100%)`,
               }}
             />
-            
+
             {/* Product Image */}
             <Image
               src={project.workPageVisualUrl || project.heroImageUrl}
@@ -355,7 +354,7 @@ interface ExitSlideProps {
 
 function ExitSlide({ isActive }: ExitSlideProps) {
   return (
-    <div 
+    <div
       className="flex-shrink-0 w-screen h-full snap-start snap-always flex items-center justify-center"
       style={{ scrollSnapAlign: 'start' }}
     >
@@ -391,7 +390,7 @@ function ExitSlide({ isActive }: ExitSlideProps) {
 
 function MobileWorkPage({ projects }: WorkPageContentProps) {
   return (
-    <div className="bg-foreground min-h-screen">
+    <div className="bg-foreground min-h-screen" data-header-theme="dark">
       {/* Header */}
       <div className="pt-28 pb-10 px-6">
         <h1 className="font-kalice text-2xl md:text-3xl text-background mb-3">
@@ -444,7 +443,7 @@ function MobileProjectCard({ project, index }: MobileProjectCardProps) {
     >
       {/* Visual */}
       <div className="relative aspect-[16/10]">
-        <div 
+        <div
           className="absolute inset-0"
           style={{
             background: `linear-gradient(135deg, 

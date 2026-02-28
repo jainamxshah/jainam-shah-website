@@ -6,16 +6,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const storyContent = {
-  title: 'Surfgeo – From SEO Tool to Growth Engine',
-  quote: 'Most SEO tools tell you what to do. Surfgeo actually does it.',
+  title: 'Surfgeo – From SEO to Growth Engine',
+  quote: "Search is changing. Surfgeo ensures you're the one answering.",
   paragraphs: [
-    'I built Surfgeo to solve one brutal problem: AI companies were building great products that nobody could find.',
-    `Surfgeo became an AI-powered growth engine that:
-• Analyzes competitors
-• Finds traffic gaps
-• Generates optimized pages
-• And compounds organic growth automatically`,
-    'This turned SEO from a cost center into a predictable acquisition channel.',
+    'Traditional SEO is failing in the age of AI answers. I built Surfgeo to solve a brutal shift: users are moving to AI-powered search (GEO) that synthesizes answers instead of linking to sources.',
+    'Surfgeo is an AI-powered growth engine that analyzes competitor citations, finds traffic gaps, and generates optimized content specifically designed to be referenced by LLMs like ChatGPT and Perplexity.',
+    'It turns organic discovery from a manual guessing game into a predictable, compounding acquisition channel.',
   ],
   ctaText: 'View Full Case Study →',
   ctaHref: '/work/surfgeo',
@@ -50,7 +46,7 @@ export default function FlagshipStory() {
   const isInView = useInView(ref, { once: true, margin: '-15%' });
 
   return (
-    <section className="bg-foreground py-24 md:py-32" ref={ref}>
+    <section className="bg-foreground py-24 md:py-32 overflow-hidden" ref={ref} data-header-theme="dark">
       <div className="max-w-[1400px] mx-auto px-6 md:px-8 lg:px-12">
         {/* Split Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -108,7 +104,7 @@ export default function FlagshipStory() {
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
               {/* Gradient placeholder */}
               <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-foreground/30" />
-              
+
               {/* Product Screenshot */}
               <Image
                 src={storyContent.visualUrl}

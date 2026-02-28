@@ -8,16 +8,34 @@ const principles = [
     heading: 'Builder',
     description:
       "I don't ship decks or demos. I ship working AI systems that users rely on and businesses monetize.",
+    icon: (
+      <svg className="w-12 h-12" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M24 4L4 14V34L24 44L44 34V14L24 4Z" />
+        <path d="M4 14L24 24M24 24L44 14M24 24V44" />
+      </svg>
+    ),
   },
   {
     heading: 'Strategist',
     description:
       'Every feature, model, and interface is designed around growth, retention, and distribution.',
+    icon: (
+      <svg className="w-12 h-12" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2">
+        <circle cx="24" cy="24" r="20" />
+        <path d="M24 12V24L32 32" strokeLinecap="round" />
+        <circle cx="24" cy="24" r="4" fill="currentColor" />
+      </svg>
+    ),
   },
   {
     heading: 'Owner',
     description:
       "I treat your product like it's my own—because outcomes matter more than deliverables.",
+    icon: (
+      <svg className="w-12 h-12" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M24 4L28.5 17H42L31 26L35.5 40L24 31L12.5 40L17 26L6 17H19.5L24 4Z" />
+      </svg>
+    ),
   },
 ];
 
@@ -49,7 +67,7 @@ export default function HowIShowUp() {
   const isInView = useInView(ref, { once: true, margin: '-20% 0px' });
 
   return (
-    <section ref={ref} className="bg-background py-24 md:py-32 relative overflow-hidden">
+    <section ref={ref} className="bg-background py-24 md:py-32 relative overflow-hidden" data-header-theme="light">
       <div className="max-w-[1400px] mx-auto px-6 md:px-8 lg:px-12">
         <motion.div
           variants={containerVariants}
@@ -71,13 +89,18 @@ export default function HowIShowUp() {
           </motion.p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {principles.map((principle, index) => (
+            {principles.map((principle) => (
               <motion.div
                 key={principle.heading}
                 variants={itemVariants}
                 className="bg-foreground/5 rounded-lg p-6"
               >
-                <h3 className="font-kalice text-lg md:text-xl font-medium text-foreground mb-2 text-center">
+                <div className="flex justify-center mb-4">
+                  <div className="text-accent">
+                    {principle.icon}
+                  </div>
+                </div>
+                <h3 className="font-kalice text-lg md:text-xl font-bold text-foreground mb-3 text-center">
                   {principle.heading}
                 </h3>
                 <p className="font-neue text-sm md:text-base text-foreground leading-relaxed">

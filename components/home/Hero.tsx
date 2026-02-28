@@ -1,28 +1,28 @@
 'use client';
 
-import { motion, useMotionValue, useSpring, animate } from 'framer-motion';
+import { motion, useMotionValue, animate } from 'framer-motion';
 import Image from 'next/image';
 
 export default function Hero() {
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background" data-header-theme="light">
       {/* Floating Diagram Background */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <motion.div
           initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-          animate={{ 
-            opacity: 0.04, 
-            scale: 1, 
+          animate={{
+            opacity: 0.04,
+            scale: 1,
             rotate: [0, 360]
           }}
-          transition={{ 
+          transition={{
             opacity: { duration: 1.5, ease: [0.22, 1, 0.36, 1] },
             scale: { duration: 1.5, ease: [0.22, 1, 0.36, 1] },
-            rotate: { 
-              duration: 40, 
-              repeat: Infinity, 
-              ease: "linear", 
+            rotate: {
+              duration: 40,
+              repeat: Infinity,
+              ease: "linear",
               delay: 1.5,
               times: [0, 1]
             }
@@ -69,7 +69,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="font-kalice text-[28px] md:text-[36px] lg:text-[44px] text-foreground leading-[1.3] tracking-[-0.01em] mb-6"
           >
-            <span className="font-normal">I&apos;m Jainam,</span>{' '}
+            <span className="font-normal">Hey! I&apos;m Jainam,</span>{' '}
             <span className="italic text-foreground/80">building AI products that turn into real businesses.</span>
           </motion.h1>
 
@@ -106,18 +106,18 @@ export default function Hero() {
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <svg 
-            width="24" 
-            height="24" 
-            viewBox="0 0 24 24" 
-            fill="none" 
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
             className="text-foreground/30"
           >
-            <path 
-              d="M6 9L12 15L18 9" 
-              stroke="currentColor" 
-              strokeWidth="1.5" 
-              strokeLinecap="round" 
+            <path
+              d="M6 9L12 15L18 9"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
               strokeLinejoin="round"
             />
           </svg>
@@ -144,8 +144,8 @@ function DraggableImage() {
       dragElastic={0.1}
       dragMomentum={false}
       onDragEnd={handleDragEnd}
-      style={{ 
-        x, 
+      style={{
+        x,
         y,
       }}
       whileDrag={{ scale: 1.1, cursor: 'grabbing', zIndex: 50 }}

@@ -18,11 +18,11 @@ export default function SiteLayout({
   return (
     <>
       <Header />
-      
-      <main id="main-content">
+
+      <main id="main-content" className="overflow-x-hidden">
         {children}
       </main>
-      
+
       {!hideFooter && <Footer />}
     </>
   );

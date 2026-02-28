@@ -39,7 +39,7 @@ export default function InsightsContent({ articles }: InsightsContentProps) {
   });
 
   const featuredArticle = articles[0]; // Most recent is featured
-  const streamArticles = activeFilter === 'All' 
+  const streamArticles = activeFilter === 'All'
     ? filteredArticles.slice(1) // Exclude featured in stream when showing all
     : filteredArticles;
 
@@ -49,9 +49,9 @@ export default function InsightsContent({ articles }: InsightsContentProps) {
       <HeroSection />
 
       {/* Section 2: Editorial Navigation (Light) */}
-      <EditorialNavigation 
-        activeFilter={activeFilter} 
-        onFilterChange={setActiveFilter} 
+      <EditorialNavigation
+        activeFilter={activeFilter}
+        onFilterChange={setActiveFilter}
       />
 
       {/* Section 3: Featured Story (Dark) - Only show when "All" is selected */}
@@ -74,7 +74,7 @@ export default function InsightsContent({ articles }: InsightsContentProps) {
 
 function HeroSection() {
   return (
-    <section className="bg-background pt-32 pb-16 md:pt-40 md:pb-20">
+    <section className="bg-background pt-32 pb-16 md:pt-40 md:pb-20" data-header-theme="light">
       <div className="max-w-[1000px] mx-auto px-6 md:px-8 text-center">
         {/* Main Headline */}
         <motion.h1
@@ -111,18 +111,17 @@ interface EditorialNavigationProps {
 
 function EditorialNavigation({ activeFilter, onFilterChange }: EditorialNavigationProps) {
   return (
-    <section className="bg-background py-6 border-b border-foreground/10 sticky top-[72px] z-40">
+    <section className="bg-background py-6 border-b border-foreground/10 sticky top-[72px] z-40" data-header-theme="light">
       <div className="max-w-[1400px] mx-auto px-6 md:px-8">
         <div className="flex flex-wrap justify-center gap-3 md:gap-4">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => onFilterChange(category)}
-              className={`font-neue text-sm md:text-base px-4 md:px-5 py-2 rounded-full transition-all duration-300 ${
-                activeFilter === category
+              className={`font-neue text-sm md:text-base px-4 md:px-5 py-2 rounded-full transition-all duration-300 ${activeFilter === category
                   ? 'bg-foreground text-background'
                   : 'text-foreground/70 hover:bg-foreground/5'
-              }`}
+                }`}
             >
               {category}
             </button>
@@ -146,7 +145,7 @@ function FeaturedStory({ article }: FeaturedStoryProps) {
   const isInView = useInView(ref, { once: true, margin: '-10%' });
 
   return (
-    <section className="bg-foreground py-16 md:py-24" ref={ref}>
+    <section className="bg-foreground py-16 md:py-24" ref={ref} data-header-theme="dark">
       <div className="max-w-[1400px] mx-auto px-6 md:px-8 lg:px-12">
         <Link href={`/insights/${article.slug}`} className="group block">
           <motion.article
@@ -170,7 +169,7 @@ function FeaturedStory({ article }: FeaturedStoryProps) {
               )}
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-transparent to-transparent" />
-              
+
               {/* Overlay Content */}
               <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
                 {/* Category Badge */}
@@ -226,7 +225,7 @@ function StoryStream({ articles }: StoryStreamProps) {
   }
 
   return (
-    <section className="bg-background py-16 md:py-24" ref={ref}>
+    <section className="bg-background py-16 md:py-24" ref={ref} data-header-theme="light">
       <div className="max-w-[1200px] mx-auto px-6 md:px-8">
         <motion.div
           initial={{ opacity: 0 }}
@@ -255,8 +254,8 @@ function ArticleCard({ article, index }: ArticleCardProps) {
       viewport={{ once: true, margin: '-5%' }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
     >
-      <Link 
-        href={`/insights/${article.slug}`} 
+      <Link
+        href={`/insights/${article.slug}`}
         className="group block py-10 md:py-12 border-b border-foreground/8 hover:bg-foreground/[0.02] transition-colors duration-300 -mx-4 px-4"
       >
         <div className="flex flex-col md:flex-row gap-6">
@@ -328,7 +327,7 @@ function StrategicCTA() {
   const isInView = useInView(ref, { once: true, margin: '-15%' });
 
   return (
-    <section className="bg-background py-20 md:py-24 border-t border-foreground/8" ref={ref}>
+    <section className="bg-background py-20 md:py-24 border-t border-foreground/8" ref={ref} data-header-theme="light">
       <div className="max-w-[800px] mx-auto px-6 md:px-8 text-center">
         {/* Text */}
         <motion.p

@@ -136,7 +136,7 @@ export default function ArticleContent({ article }: ArticleContentProps) {
   const isHeaderInView = useInView(headerRef, { once: true });
 
   return (
-    <article className="min-h-screen bg-background pt-32 pb-24 md:pt-40 md:pb-32">
+    <article className="min-h-screen bg-background pt-32 pb-24 md:pt-40 md:pb-32" data-header-theme="light">
       <div className="max-w-[750px] mx-auto px-6 md:px-12">
         {/* Article Header */}
         <motion.header

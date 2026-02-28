@@ -12,13 +12,13 @@ export default function Home() {
       {/* Section 1: Hero – Identity + Mission + Trust (Light) */}
       <Hero />
 
-      {/* Section 2: How I Show Up – Operating Principles (Light) */}
+      {/* Section 2: Proof Strip – Where I've Done This (Dark) */}
       <ProofStrip />
 
-      {/* Section 3: Proof Strip – Where I've Done This (Dark) */}
+      {/* Section 3: How I Show Up – Operating Principles (Light) */}
       <HowIShowUp />
 
-      {/* Section 4: Domain Mastery – Where I Operate (Light) */}
+      {/* Section 4: Domain Mastery – Where I Operate (Dark) */}
       <DomainMastery />
 
       {/* Section 5: Flagship Story – Deep Proof (Dark) */}

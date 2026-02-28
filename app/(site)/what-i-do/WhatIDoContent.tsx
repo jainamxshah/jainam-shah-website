@@ -38,7 +38,7 @@ export default function WhatIDoContent() {
 
 function HeroSection() {
   return (
-    <section className="bg-background min-h-screen flex items-center justify-center pt-20 pb-20 relative overflow-hidden">
+    <section className="bg-background min-h-screen flex items-center justify-center pt-20 pb-20 relative overflow-hidden" data-header-theme="light">
       <div className="max-w-[1100px] mx-auto px-6 md:px-8 text-center relative z-10">
         {/* Main Headline */}
         <motion.h1
@@ -101,7 +101,7 @@ function JainamLoopSection() {
   const isInView = useInView(ref, { once: true, margin: '-10%' });
 
   return (
-    <section className="bg-foreground py-2 md:py-4 lg:py-8" ref={ref}>
+    <section className="bg-foreground py-2 md:py-4 lg:py-8" ref={ref} data-header-theme="dark">
       <div className="max-w-[1400px] mx-auto px-6 md:px-8 lg:px-12">
         {/* Central Diagram */}
         <motion.div
@@ -120,14 +120,14 @@ function JainamLoopSection() {
             The Jainam Loop
           </motion.h2>
           {/* Circular Path */}
-          <motion.svg 
-            viewBox="0 0 400 400" 
+          <motion.svg
+            viewBox="0 0 400 400"
             className="w-full h-full"
             style={{ transformOrigin: 'center center' }}
             animate={{ rotate: 360 }}
-            transition={{ 
-              duration: 30, 
-              repeat: Infinity, 
+            transition={{
+              duration: 30,
+              repeat: Infinity,
               ease: "linear",
               delay: 2
             }}
@@ -138,25 +138,25 @@ function JainamLoopSection() {
               cy="200"
               r="130"
               fill="none"
-              stroke="rgba(249, 226, 145, 0.3)"
+              stroke="rgba(210, 140, 63, 0.3)"
               strokeWidth="2"
               initial={{ pathLength: 0 }}
               animate={isInView ? { pathLength: 1 } : {}}
               transition={{ duration: 1.5, delay: 0.5, ease: 'easeInOut' }}
             />
-            
+
             {/* Arrows between nodes */}
             <defs>
               <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                <polygon points="0 0, 10 3.5, 0 7" fill="rgba(249, 226, 145, 0.6)" />
+                <polygon points="0 0, 10 3.5, 0 7" fill="rgba(210, 140, 63, 0.6)" />
               </marker>
             </defs>
-            
+
             {/* Curved arrows */}
             <motion.path
               d="M 200 70 A 130 130 0 0 1 292 112"
               fill="none"
-              stroke="rgba(249, 226, 145, 0.4)"
+              stroke="rgba(210, 140, 63, 0.4)"
               strokeWidth="1.5"
               markerEnd="url(#arrowhead)"
               initial={{ pathLength: 0 }}
@@ -166,7 +166,7 @@ function JainamLoopSection() {
             <motion.path
               d="M 292 112 A 130 130 0 0 1 292 288"
               fill="none"
-              stroke="rgba(249, 226, 145, 0.4)"
+              stroke="rgba(210, 140, 63, 0.4)"
               strokeWidth="1.5"
               markerEnd="url(#arrowhead)"
               initial={{ pathLength: 0 }}
@@ -176,7 +176,7 @@ function JainamLoopSection() {
             <motion.path
               d="M 292 288 A 130 130 0 0 1 200 330"
               fill="none"
-              stroke="rgba(249, 226, 145, 0.4)"
+              stroke="rgba(210, 140, 63, 0.4)"
               strokeWidth="1.5"
               markerEnd="url(#arrowhead)"
               initial={{ pathLength: 0 }}
@@ -186,7 +186,7 @@ function JainamLoopSection() {
             <motion.path
               d="M 200 330 A 130 130 0 0 1 108 288"
               fill="none"
-              stroke="rgba(249, 226, 145, 0.4)"
+              stroke="rgba(210, 140, 63, 0.4)"
               strokeWidth="1.5"
               markerEnd="url(#arrowhead)"
               initial={{ pathLength: 0 }}
@@ -196,7 +196,7 @@ function JainamLoopSection() {
             <motion.path
               d="M 108 288 A 130 130 0 0 1 108 112"
               fill="none"
-              stroke="rgba(249, 226, 145, 0.4)"
+              stroke="rgba(210, 140, 63, 0.4)"
               strokeWidth="1.5"
               markerEnd="url(#arrowhead)"
               initial={{ pathLength: 0 }}
@@ -206,7 +206,7 @@ function JainamLoopSection() {
             <motion.path
               d="M 108 112 A 130 130 0 0 1 200 70"
               fill="none"
-              stroke="rgba(249, 226, 145, 0.4)"
+              stroke="rgba(210, 140, 63, 0.4)"
               strokeWidth="1.5"
               markerEnd="url(#arrowhead)"
               initial={{ pathLength: 0 }}
@@ -303,7 +303,7 @@ function WhereIPlugIn() {
   const isInView = useInView(ref, { once: true, margin: '-10%' });
 
   return (
-    <section className="bg-background py-24 md:py-32" ref={ref}>
+    <section className="bg-background py-24 md:py-32" ref={ref} data-header-theme="light">
       <div className="max-w-[1400px] mx-auto px-6 md:px-8 lg:px-12">
         {/* Section Title */}
         <motion.h2
@@ -392,7 +392,7 @@ function WhatHappens() {
   const isInView = useInView(ref, { once: true, margin: '-10%' });
 
   return (
-    <section className="bg-foreground py-24 md:py-32" ref={ref}>
+    <section className="bg-foreground py-24 md:py-32" ref={ref} data-header-theme="dark">
       <div className="max-w-[1400px] mx-auto px-6 md:px-8 lg:px-12">
         {/* Section Title */}
         <motion.h2
@@ -460,7 +460,7 @@ function PhilosophySection() {
   const isInView = useInView(ref, { once: true, margin: '-15%' });
 
   return (
-    <section className="bg-foreground py-24 md:py-32 lg:py-40" ref={ref}>
+    <section className="bg-foreground py-24 md:py-32 lg:py-40" ref={ref} data-header-theme="dark">
       <div className="max-w-[1000px] mx-auto px-6 md:px-8 lg:px-12 text-center">
         {/* Decorative Quote Mark */}
         <motion.div
@@ -511,7 +511,7 @@ function CallToActionSection() {
   const isInView = useInView(ref, { once: true, margin: '-15%' });
 
   return (
-    <section className="bg-background py-24 md:py-32 lg:py-40" ref={ref}>
+    <section className="bg-background py-24 md:py-32 lg:py-40" ref={ref} data-header-theme="light">
       <div className="max-w-[900px] mx-auto px-6 md:px-8 lg:px-12 text-center">
         {/* Headline */}
         <motion.h2

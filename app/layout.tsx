@@ -63,7 +63,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#f0f0f0',
+  themeColor: '#fffbf9',
 };
 
 // JSON-LD Schema for Person

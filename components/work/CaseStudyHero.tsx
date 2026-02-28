@@ -10,7 +10,7 @@ interface CaseStudyHeroProps {
 
 export default function CaseStudyHero({ project }: CaseStudyHeroProps) {
   return (
-    <section className="pt-32 md:pt-40">
+    <section className="pt-32 md:pt-40" data-header-theme="light">
       {/* Hero Image - Full width breakout */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}

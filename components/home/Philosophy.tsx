@@ -8,7 +8,7 @@ export default function Philosophy() {
   const isInView = useInView(ref, { once: true, margin: '-20%' });
 
   return (
-    <section className="bg-foreground py-24 md:py-32" ref={ref}>
+    <section className="bg-foreground py-24 md:py-32 overflow-hidden" ref={ref} data-header-theme="dark">
       <div className="max-w-[1000px] mx-auto px-6 md:px-8 lg:px-12 text-center">
         {/* Decorative Quote Mark */}
         <motion.div
