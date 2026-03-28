@@ -6,16 +6,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const storyContent = {
-  title: 'Surfgeo – From SEO to Growth Engine',
-  quote: "Search is changing. Surfgeo ensures you're the one answering.",
+  title: 'Natasha – The Future of Agentic Presence',
+  quote: "AI shouldn't just respond; it should remember, reason, and act.",
   paragraphs: [
-    'Traditional SEO is failing in the age of AI answers. I built Surfgeo to solve a brutal shift: users are moving to AI-powered search (GEO) that synthesizes answers instead of linking to sources.',
-    'Surfgeo is an AI-powered growth engine that analyzes competitor citations, finds traffic gaps, and generates optimized content specifically designed to be referenced by LLMs like ChatGPT and Perplexity.',
-    'It turns organic discovery from a manual guessing game into a predictable, compounding acquisition channel.',
+    'Most AI assistants are ephemeral—each session starts from zero. I built Natasha to solve the persistence gap: an AI identity that maintains a unified memory, adapts to your communication style, and operates autonomously.',
+    'Built with a multi-modal core and vector-based long-term memory, Natasha handles complex scheduling, provides proactive insights based on past patterns, and evolves its personality through every interaction.',
+    'It transitions AI from a reactive tool to a persistent digital partner with genuine context and agency.',
   ],
   ctaText: 'View Full Case Study →',
-  ctaHref: '/work/surfgeo',
-  visualUrl: '/images/projects/surfgeo-dashboard.jpg',
+  ctaHref: '/work/natasha',
+  visualUrl: '/images/natasha.png',
 };
 
 const containerVariants = {
@@ -108,7 +108,7 @@ export default function FlagshipStory() {
               {/* Product Screenshot */}
               <Image
                 src={storyContent.visualUrl}
-                alt="Surfgeo Dashboard"
+                alt="Product Interface"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -129,4 +129,3 @@ export default function FlagshipStory() {
     </section>
   );
 }
-

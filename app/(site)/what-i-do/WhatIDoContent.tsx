@@ -124,13 +124,6 @@ function JainamLoopSection() {
             viewBox="0 0 400 400"
             className="w-full h-full"
             style={{ transformOrigin: 'center center' }}
-            animate={{ rotate: 360 }}
-            transition={{
-              duration: 30,
-              repeat: Infinity,
-              ease: "linear",
-              delay: 2
-            }}
           >
             {/* Main Circle */}
             <motion.circle
@@ -217,20 +210,20 @@ function JainamLoopSection() {
 
           {/* Loop Labels */}
           {loopSteps.map((step, index) => {
-            const svgCenter = 180; // Center of 400x400 viewBox
-            const mainRadius = 110;
-            // Position box centers outside the circle so inner edge touches circle
-            // Estimate box width ~20-25 SVG units, so center should be ~12 units outside circle
-            const boxOffset = 12; // Distance from circle edge to box center
-            const labelRadius = mainRadius + boxOffset;
+            const svgCenter = 170; // Exact center of 400x400 viewBox
+            const mainCircleRadius = 105;
+
+            // Adjust distance for mobile vs desktop
+            // On mobile we need slightly more clearance
+            const labelRadius = mainCircleRadius + 20;
+
             const angleRad = (step.angle * Math.PI) / 180;
-            // Calculate position in SVG coordinates (0-400)
-            // In SVG, y increases downward, so sin works correctly for standard angles
             const svgX = svgCenter + labelRadius * Math.cos(angleRad);
             const svgY = svgCenter + labelRadius * Math.sin(angleRad);
-            // Convert to percentage for absolute positioning
-            const x = (svgX / 410) * 100;
-            const y = (svgY / 390) * 100;
+
+            // Convert to percentage (0-100)
+            const x = (svgX / 400) * 100;
+            const y = (svgY / 370) * 100;
 
             return (
               <motion.div
@@ -241,8 +234,8 @@ function JainamLoopSection() {
                 className="absolute transform -translate-x-1/2 -translate-y-1/2"
                 style={{ left: `${x}%`, top: `${y}%` }}
               >
-                <div className="bg-accent/20 backdrop-blur-sm border border-accent/40 rounded-xl px-4 py-2.5 md:px-5 md:py-3">
-                  <span className="font-neue text-xs md:text-sm font-medium text-accent whitespace-nowrap">
+                <div className="bg-accent/15 backdrop-blur-md border border-accent/30 rounded-lg md:rounded-xl px-2.5 py-1.5 md:px-5 md:py-3 shadow-lg shadow-black/20">
+                  <span className="font-neue text-[10px] md:text-sm font-medium text-accent whitespace-nowrap">
                     {step.name}
                   </span>
                 </div>
@@ -276,25 +269,21 @@ const plugInAreas = [
     title: 'Market',
     description: 'Positioning, ICP, and competitive intelligence',
     icon: '◎',
-    gradient: 'from-amber-100 to-orange-50',
   },
   {
     title: 'Product',
     description: 'UX, flows, onboarding, and activation',
     icon: '◇',
-    gradient: 'from-emerald-50 to-teal-50',
   },
   {
     title: 'AI',
     description: 'LLMs, automation, recommendations, and generation',
     icon: '⬡',
-    gradient: 'from-violet-50 to-purple-50',
   },
   {
     title: 'Distribution',
     description: 'Search, SEO, virality, and conversion',
     icon: '△',
-    gradient: 'from-sky-50 to-blue-50',
   },
 ];
 
@@ -324,10 +313,10 @@ function WhereIPlugIn() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -6, scale: 1.01 }}
-              className={`relative bg-gradient-to-br ${area.gradient} border border-foreground/8 rounded-2xl p-8 md:p-10 lg:p-12 overflow-hidden group cursor-default`}
+              className="relative bg-foreground/[0.02] border border-foreground/5 rounded-2xl p-8 md:p-10 lg:p-12 overflow-hidden group cursor-default hover:bg-foreground/[0.04] hover:border-accent/20 transition-all duration-500"
             >
               {/* Background Icon */}
-              <div className="absolute top-4 right-4 text-foreground/5 text-[100px] md:text-[120px] font-light leading-none pointer-events-none group-hover:text-foreground/8 transition-colors duration-500">
+              <div className="absolute top-4 right-4 text-accent/5 text-[100px] md:text-[120px] font-light leading-none pointer-events-none group-hover:text-accent/10 transition-colors duration-500">
                 {area.icon}
               </div>
 
@@ -405,43 +394,54 @@ function WhatHappens() {
         </motion.h2>
 
         {/* Timeline Strip */}
-        <div className="relative pt-12 pb-8">
-          {/* Horizontal Timeline Line */}
+        <div className="relative pt-4 md:pt-12 pb-8">
+          {/* Horizontal Timeline Line (Desktop) */}
           <motion.div
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute top-12 left-0 right-0 h-[2px] bg-accent origin-left"
+            className="absolute top-12 left-0 right-0 h-[2px] bg-accent origin-left hidden md:block"
+          />
+
+          {/* Vertical Timeline Line (Mobile) */}
+          <motion.div
+            initial={{ scaleY: 0 }}
+            animate={isInView ? { scaleY: 1 } : {}}
+            transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute left-6 top-0 bottom-0 w-[2px] bg-accent/40 origin-top md:hidden"
           />
 
           {/* Timeline Steps */}
-          <div className="relative flex flex-col md:flex-row justify-between gap-8 md:gap-4 lg:gap-8">
+          <div className="relative flex flex-col md:flex-row justify-between gap-12 md:gap-4 lg:gap-8">
             {timelineSteps.map((step, index) => (
               <motion.div
                 key={step.number}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.2 + index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-                className="relative flex-1 text-center"
+                className="relative flex flex-row md:flex-col items-start md:items-center gap-6 md:gap-0 text-left md:text-center"
               >
                 {/* Step Number Circle - positioned on the line */}
-                <div className="flex justify-center mb-5 relative z-10">
-                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-foreground border-2 border-accent flex items-center justify-center -mt-6">
+                <div className="flex-shrink-0 relative z-10 md:mb-5">
+                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-foreground border-2 border-accent flex items-center justify-center md:-mt-6">
                     <span className="font-neue text-sm md:text-base font-bold text-accent">
                       {step.number}
                     </span>
                   </div>
                 </div>
 
-                {/* Title */}
-                <h3 className="font-kalice text-lg md:text-xl text-background mb-2">
-                  {step.title}
-                </h3>
+                {/* Content Container */}
+                <div className="flex-1 pt-1 md:pt-0">
+                  {/* Title */}
+                  <h3 className="font-kalice text-lg md:text-xl text-background mb-2">
+                    {step.title}
+                  </h3>
 
-                {/* Description */}
-                <p className="font-neue text-sm text-background/65 leading-[1.6]">
-                  {step.description}
-                </p>
+                  {/* Description */}
+                  <p className="font-neue text-sm text-background/65 leading-[1.6]">
+                    {step.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>

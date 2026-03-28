@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Project } from '@/lib/projects';
 
@@ -11,36 +10,6 @@ interface CaseStudyHeroProps {
 export default function CaseStudyHero({ project }: CaseStudyHeroProps) {
   return (
     <section className="pt-32 md:pt-40" data-header-theme="light">
-      {/* Hero Image - Full width breakout */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="w-full max-w-[1400px] mx-auto px-6 md:px-8 lg:px-12 mb-12 md:mb-16"
-      >
-        <div className="relative aspect-[21/9] md:aspect-[16/7] rounded-2xl overflow-hidden bg-foreground/5">
-          {/* Placeholder gradient */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `linear-gradient(135deg, 
-                hsl(${(parseInt(project.id) * 60) % 360}, 20%, 80%) 0%, 
-                hsl(${(parseInt(project.id) * 60 + 45) % 360}, 25%, 70%) 100%)`,
-            }}
-          />
-          <Image
-            src={project.heroImageUrl}
-            alt={`${project.name} hero image`}
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-            onError={(e) => {
-              e.currentTarget.style.opacity = '0';
-            }}
-          />
-        </div>
-      </motion.div>
 
       {/* Content */}
       <div className="max-w-[1000px] mx-auto px-6 md:px-8 lg:px-12">

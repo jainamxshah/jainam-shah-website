@@ -2,7 +2,7 @@ import prisma from '@/lib/db/prisma';
 import { projects as staticProjects, type Project } from '@/lib/projects';
 
 // Use database when available, fallback to static data
-const USE_DATABASE = true;
+const USE_DATABASE = false;
 
 // Type for database project with optional work page fields
 type DbProject = {
