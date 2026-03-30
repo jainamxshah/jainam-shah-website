@@ -119,8 +119,8 @@ function EditorialNavigation({ activeFilter, onFilterChange }: EditorialNavigati
               key={category}
               onClick={() => onFilterChange(category)}
               className={`font-neue text-sm md:text-base px-4 md:px-5 py-2 rounded-full transition-all duration-300 ${activeFilter === category
-                  ? 'bg-foreground text-background'
-                  : 'text-foreground/70 hover:bg-foreground/5'
+                ? 'bg-foreground text-background'
+                : 'text-foreground/70 hover:bg-foreground/5'
                 }`}
             >
               {category}
@@ -154,7 +154,7 @@ function FeaturedStory({ article }: FeaturedStoryProps) {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             {/* Featured Image */}
-            <div className="relative aspect-[21/9] rounded-2xl overflow-hidden mb-8 bg-background/10">
+            <div className="relative aspect-video rounded-2xl overflow-hidden mb-8 bg-background/10">
               {article.featuredImage && (
                 <Image
                   src={article.featuredImage}
@@ -260,7 +260,7 @@ function ArticleCard({ article, index }: ArticleCardProps) {
       >
         <div className="flex flex-col md:flex-row gap-6">
           {/* Article Image */}
-          <div className="relative w-full md:w-64 lg:w-80 aspect-video md:aspect-[4/3] flex-shrink-0 overflow-hidden rounded-lg bg-foreground/5">
+          <div className="relative w-full md:w-64 lg:w-80 aspect-video flex-shrink-0 overflow-hidden rounded-lg bg-foreground/5">
             {article.featuredImage ? (
               <Image
                 src={article.featuredImage}
@@ -351,7 +351,7 @@ function StrategicCTA() {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full sm:w-auto font-neue text-base font-medium bg-foreground text-background px-8 py-3.5 rounded-lg hover:bg-accent hover:text-foreground transition-colors duration-300"
+              className="w-full sm:w-auto font-neue text-sm font-medium bg-foreground text-background px-6 py-2.5 rounded-lg hover:bg-accent hover:text-foreground transition-colors duration-300"
             >
               Work with me
             </motion.button>
@@ -362,7 +362,7 @@ function StrategicCTA() {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full sm:w-auto font-neue text-base font-medium bg-transparent text-foreground border-2 border-foreground px-8 py-3.5 rounded-lg hover:bg-foreground hover:text-background transition-colors duration-300"
+              className="w-full sm:w-auto font-neue text-sm font-medium bg-transparent text-foreground border border-foreground px-6 py-2.5 rounded-lg hover:bg-foreground hover:text-background transition-colors duration-300"
             >
               See my products
             </motion.button>

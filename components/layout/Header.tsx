@@ -72,9 +72,10 @@ export default function Header() {
     };
   }, [pathname]); // Re-observe on route change
 
-  // Close mobile menu on route change
+  // Close mobile menu and reset theme on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
+    setActiveTheme('light'); // Reset to light by default on new page
   }, [pathname]);
 
   const isDark = activeTheme === 'dark';

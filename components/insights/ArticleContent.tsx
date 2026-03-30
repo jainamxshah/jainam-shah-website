@@ -170,7 +170,7 @@ export default function ArticleContent({ article }: ArticleContentProps) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative aspect-[21/9] rounded-xl overflow-hidden mb-16 bg-foreground/5"
+            className="relative aspect-video rounded-xl overflow-hidden mb-16 bg-foreground/5"
           >
             <div
               className="absolute inset-0"

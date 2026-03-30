@@ -109,9 +109,8 @@ export default function ContactQualificationForm() {
               value={formData.name}
               onChange={handleChange}
               required
-              className={`w-full font-neue text-sm px-0 py-3 bg-transparent border-0 border-b border-foreground/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-foreground transition-all duration-200 ${
-                errors.name ? 'border-red-400' : ''
-              }`}
+              className={`w-full font-neue text-sm px-0 py-3 bg-transparent border-0 border-b border-foreground/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-foreground transition-all duration-200 ${errors.name ? 'border-red-400' : ''
+                }`}
             />
             {errors.name && (
               <p className="font-neue text-[10px] text-red-500 mt-1">{errors.name}</p>
@@ -131,9 +130,8 @@ export default function ContactQualificationForm() {
               value={formData.email}
               onChange={handleChange}
               required
-              className={`w-full font-neue text-sm px-0 py-3 bg-transparent border-0 border-b border-foreground/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-foreground transition-all duration-200 ${
-                errors.email ? 'border-red-400' : ''
-              }`}
+              className={`w-full font-neue text-sm px-0 py-3 bg-transparent border-0 border-b border-foreground/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-foreground transition-all duration-200 ${errors.email ? 'border-red-400' : ''
+                }`}
             />
             {errors.email && (
               <p className="font-neue text-[10px] text-red-500 mt-1">{errors.email}</p>
@@ -154,9 +152,8 @@ export default function ContactQualificationForm() {
             onChange={handleChange}
             rows={6}
             required
-            className={`w-full font-neue text-sm px-0 py-3 bg-transparent border-0 border-b border-foreground/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-foreground transition-all duration-200 resize-y ${
-              errors.message ? 'border-red-400' : ''
-            }`}
+            className={`w-full font-neue text-sm px-0 py-3 bg-transparent border-0 border-b border-foreground/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-foreground transition-all duration-200 resize-y ${errors.message ? 'border-red-400' : ''
+              }`}
           />
           {errors.message && (
             <p className="font-neue text-[10px] text-red-500 mt-1">{errors.message}</p>
@@ -184,7 +181,7 @@ export default function ContactQualificationForm() {
           <button
             type="submit"
             disabled={status === 'submitting'}
-            className="flex items-center justify-center gap-2 font-neue text-sm font-medium bg-foreground text-background px-8 py-3.5 rounded-md hover:bg-foreground/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wide"
+            className="flex items-center justify-center gap-2 font-neue text-sm font-medium bg-foreground text-background px-6 py-2.5 rounded-md hover:bg-foreground/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wide"
           >
             {status === 'submitting' ? (
               <>

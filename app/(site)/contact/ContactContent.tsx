@@ -25,7 +25,7 @@ export default function ContactContent() {
 
 function HeroSection() {
   return (
-    <section className="bg-background pt-32 pb-16 md:pt-40 md:pb-20">
+    <section className="bg-background pt-32 pb-16 md:pt-40 md:pb-20" data-header-theme="light">
       <div className="max-w-[800px] mx-auto px-6 md:px-8 text-center">
         {/* Main Headline */}
         <motion.h1
@@ -60,7 +60,7 @@ function FormSection() {
   const isInView = useInView(ref, { once: true, margin: '-10%' });
 
   return (
-    <section className="bg-background py-4 md:py-6" ref={ref}>
+    <section className="bg-background py-4 md:py-6" ref={ref} data-header-theme="light">
       <div className="max-w-[700px] mx-auto px-6 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -83,7 +83,7 @@ function DirectChannelSection() {
   const isInView = useInView(ref, { once: true, margin: '-15%' });
 
   return (
-    <section className="bg-foreground py-20 md:py-24" ref={ref}>
+    <section className="bg-foreground py-20 md:py-24" ref={ref} data-header-theme="dark">
       <div className="max-w-[800px] mx-auto px-6 md:px-8 text-center">
         {/* Text */}
         <motion.p

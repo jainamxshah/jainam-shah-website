@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
+import ChessPlugIn from '@/components/chess/ChessPlugIn';
 
 // ============================================
 // WHAT I DO PAGE - 8 Sections
@@ -17,8 +18,8 @@ export default function WhatIDoContent() {
       {/* Section 2: The Jainam Loop – Core Visual (Dark) */}
       <JainamLoopSection />
 
-      {/* Section 3: Where I Plug In (Light) */}
-      <WhereIPlugIn />
+      {/* Section 3: Where I Plug In (Chess) */}
+      <ChessPlugIn />
 
       {/* Section 4: What Happens When You Hire Me (Dark) */}
       <WhatHappens />
@@ -64,7 +65,7 @@ function HeroSection() {
 
         {/* CTA Button */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
@@ -72,7 +73,7 @@ function HeroSection() {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              className="font-neue text-sm font-medium bg-foreground text-background px-10 py-4 rounded-lg hover:bg-accent hover:text-foreground transition-colors duration-300"
+              className="font-neue text-sm font-medium bg-foreground text-background px-6 py-2.5 rounded-lg hover:bg-accent hover:text-foreground transition-colors duration-300"
             >
               Start a Conversation
             </motion.button>
@@ -260,94 +261,6 @@ function JainamLoopSection() {
   );
 }
 
-// ============================================
-// SECTION 3: WHERE I PLUG IN
-// ============================================
-
-const plugInAreas = [
-  {
-    title: 'Market',
-    description: 'Positioning, ICP, and competitive intelligence',
-    icon: '◎',
-  },
-  {
-    title: 'Product',
-    description: 'UX, flows, onboarding, and activation',
-    icon: '◇',
-  },
-  {
-    title: 'AI',
-    description: 'LLMs, automation, recommendations, and generation',
-    icon: '⬡',
-  },
-  {
-    title: 'Distribution',
-    description: 'Search, SEO, virality, and conversion',
-    icon: '△',
-  },
-];
-
-function WhereIPlugIn() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-10%' });
-
-  return (
-    <section className="bg-background py-24 md:py-32" ref={ref} data-header-theme="light">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-8 lg:px-12">
-        {/* Section Title */}
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="font-kalice text-xl md:text-2xl lg:text-[28px] text-foreground text-center mb-14 md:mb-20"
-        >
-          Where I Plug In
-        </motion.h2>
-
-        {/* Four Tiles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-12">
-          {plugInAreas.map((area, index) => (
-            <motion.div
-              key={area.title}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -6, scale: 1.01 }}
-              className="relative bg-foreground/[0.02] border border-foreground/5 rounded-2xl p-8 md:p-10 lg:p-12 overflow-hidden group cursor-default hover:bg-foreground/[0.04] hover:border-accent/20 transition-all duration-500"
-            >
-              {/* Background Icon */}
-              <div className="absolute top-4 right-4 text-accent/5 text-[100px] md:text-[120px] font-light leading-none pointer-events-none group-hover:text-accent/10 transition-colors duration-500">
-                {area.icon}
-              </div>
-
-              {/* Content */}
-              <div className="relative z-10">
-                <h3 className="font-kalice text-lg md:text-xl lg:text-[22px] text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
-                  {area.title}
-                </h3>
-                <p className="font-neue text-sm md:text-base text-foreground/70 leading-[1.6]">
-                  {area.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Bottom Statement */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="font-neue text-base md:text-lg text-foreground/80 text-center max-w-[600px] mx-auto leading-[1.7]"
-        >
-          Most teams only optimize one layer.
-          <br />
-          <span className="text-foreground font-medium">I connect all four into one system.</span>
-        </motion.p>
-      </div>
-    </section>
-  );
-}
 
 // ============================================
 // SECTION 4: WHAT HAPPENS WHEN YOU HIRE ME
@@ -533,7 +446,7 @@ function CallToActionSection() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-              className="font-neue text-sm md:text-base font-medium bg-accent text-foreground px-10 py-4 rounded-lg hover:bg-background transition-colors duration-300"
+              className="font-neue text-sm font-medium bg-accent text-foreground px-6 py-2.5 rounded-lg hover:bg-background transition-colors duration-300"
             >
               Let&apos;s Talk
             </motion.button>

@@ -26,7 +26,7 @@ export const articles: Article[] = [
     category: 'AI & Product',
     date: '2025-12-15',
     readTime: '8 min read',
-    featuredImage: '/images/articles/ai-products.jpg',
+    featuredImage: '/images/why_product_fail.png',
     author: 'Jainam Shah',
     content: `The excitement around AI has reached fever pitch. Every startup claims to be "AI-powered," every enterprise is launching "AI initiatives," and every product roadmap has an "AI feature" somewhere. Yet the vast majority of these efforts fail to deliver meaningful value.
 
@@ -82,7 +82,7 @@ If you're building AI products, start with the failure modes. Map out every way 
     category: 'Growth',
     date: '2025-11-28',
     readTime: '6 min read',
-    featuredImage: '/images/articles/search-architecture.jpg',
+    featuredImage: '/images/search_first_arch.png',
     author: 'Jainam Shah',
     content: `Most products treat SEO as a marketing channel—something to optimize after the product is built. This is backwards. The most successful digital products I've worked on were engineered for organic discovery from the architecture level.
 
@@ -144,7 +144,7 @@ Search-first architecture requires upfront investment and patience. The payoff i
     category: 'Product',
     date: '2025-11-10',
     readTime: '10 min read',
-    featuredImage: '/images/articles/product-launch.jpg',
+    featuredImage: '/images/10kusers.png',
     author: 'Jainam Shah',
     content: `Launching a product that people actually use isn't magic—it's methodology. After taking multiple products from zero to meaningful traction, I've distilled the process into a repeatable playbook.
 
@@ -243,7 +243,7 @@ The playbook isn't complicated. The execution is hard.`,
     category: 'Design',
     date: '2025-10-22',
     readTime: '7 min read',
-    featuredImage: '/images/articles/conversion-design.jpg',
+    featuredImage: '/images/designing_conversion.png',
     author: 'Jainam Shah',
     content: `The internet is full of dark patterns—design choices that trick users into actions they didn't intend. Hidden fees, confusing unsubscribe flows, shame-based opt-outs. They work in the short term and destroy trust in the long term.
 
@@ -339,7 +339,7 @@ Design for the customer you want to keep, not just the conversion you want to co
     category: 'AI & Growth',
     date: '2025-10-05',
     readTime: '9 min read',
-    featuredImage: '/images/articles/ai-seo.jpg',
+    featuredImage: '/images/aiseo.png',
     author: 'Jainam Shah',
     content: `Search is undergoing its biggest transformation since Google launched. AI-powered search experiences are changing how users discover information, and most SEO strategies are already obsolete.
 
