@@ -60,13 +60,12 @@ export async function POST(request: Request) {
       { message: 'Form submitted successfully', data },
       { status: 200 }
     );
-  } catch (error: any) {
-    console.error('Contact form error details:', {
-      message: error.message,
-      stack: error.stack
-    });
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Internal server error';
+    console.error('Contact form error details:', error);
+    
     return NextResponse.json(
-      { error: error.message || 'Internal server error' },
+      { error: errorMessage },
       { status: 500 }
     );
   }
