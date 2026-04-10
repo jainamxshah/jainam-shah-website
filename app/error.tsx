@@ -55,7 +55,7 @@ export default function Error({
             Try Again
           </button>
           <a
-            href="mailto:hello@jainamshah.com"
+            href="mailto:jainams471@gmail.com"
             className="px-6 py-3 border-2 border-foreground text-foreground rounded-md font-sans text-base font-medium transition-colors duration-300 hover:bg-foreground hover:text-background"
           >
             Contact Support

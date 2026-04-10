@@ -11,7 +11,7 @@ const footerLinks = [
 
 const socialLinks = [
   {
-    href: 'https://linkedin.com/in/jainam-shah-aiml-ahmedabad',
+    href: 'https://linkedin.com/in/jainam-shah-aiml',
     label: 'LinkedIn',
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

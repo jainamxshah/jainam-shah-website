@@ -13,11 +13,11 @@ const products = [
     oneliner: 'Agentic assistant with persistent memory',
   },
   {
-    name: 'LexRAG',
+    name: 'Lexora',
     oneliner: 'AI legal risk and contract intelligence',
   },
   {
-    name: 'CARag',
+    name: 'Fyntra',
     oneliner: 'Tax and compliance automation system',
   },
   {

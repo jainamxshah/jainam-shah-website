@@ -54,11 +54,9 @@ export default function ContactQualificationForm() {
 
       setStatus('success');
       setFormData(initialFormData);
-    } catch {
-      // Simulate success for demo
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setStatus('success');
-      setFormData(initialFormData);
+    } catch (error) {
+      console.error('Submission error:', error);
+      setStatus('error');
     }
   };
 
@@ -109,7 +107,7 @@ export default function ContactQualificationForm() {
               value={formData.name}
               onChange={handleChange}
               required
-              className={`w-full font-neue text-sm px-0 py-3 bg-transparent border-0 border-b border-foreground/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-foreground transition-all duration-200 ${errors.name ? 'border-red-400' : ''
+              className={`w-full font-neue text-sm px-0 py-3 bg-transparent border-0 border-b border-foreground/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-foreground focus:ring-0 transition-colors duration-150 ${errors.name ? 'border-red-500' : ''
                 }`}
             />
             {errors.name && (
@@ -130,7 +128,7 @@ export default function ContactQualificationForm() {
               value={formData.email}
               onChange={handleChange}
               required
-              className={`w-full font-neue text-sm px-0 py-3 bg-transparent border-0 border-b border-foreground/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-foreground transition-all duration-200 ${errors.email ? 'border-red-400' : ''
+              className={`w-full font-neue text-sm px-0 py-3 bg-transparent border-0 border-b border-foreground/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-foreground focus:ring-0 transition-colors duration-150 ${errors.email ? 'border-red-500' : ''
                 }`}
             />
             {errors.email && (
@@ -152,7 +150,7 @@ export default function ContactQualificationForm() {
             onChange={handleChange}
             rows={6}
             required
-            className={`w-full font-neue text-sm px-0 py-3 bg-transparent border-0 border-b border-foreground/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-foreground transition-all duration-200 resize-y ${errors.message ? 'border-red-400' : ''
+            className={`w-full font-neue text-sm px-0 py-3 bg-transparent border-0 border-b border-foreground/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-foreground focus:ring-0 transition-colors duration-150 resize-y ${errors.message ? 'border-red-500' : ''
               }`}
           />
           {errors.message && (

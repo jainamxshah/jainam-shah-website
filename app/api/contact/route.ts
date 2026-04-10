@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { Resend } from 'resend';
 
 interface ContactFormData {
   name: string;
@@ -27,18 +28,16 @@ export async function POST(request: Request) {
       );
     }
 
-    // In production, you would:
-    // 1. Send email via Resend, SendGrid, or similar service
-    // 2. Store in database
-    // 3. Send auto-reply to user (optional)
-    
-    // Example with Resend (uncomment and configure in production):
-    /*
+    // Initialize Resend
     const resend = new Resend(process.env.RESEND_API_KEY);
     
-    await resend.emails.send({
-      from: 'Contact Form <contact@jainamshah.com>',
-      to: ['hello@jainamshah.com'],
+    // Send email via Resend
+    // NOTE: In Resend, you MUST verify your domain (e.g. jainamshah.com) 
+    // to send emails from it. If your domain is NOT yet verified, 
+    // you should use 'onboarding@resend.dev' for testing.
+    const { data, error: resendError } = await resend.emails.send({
+      from: 'Contact Form <onboarding@resend.dev>',
+      to: ['jainams471@gmail.com'],
       subject: `New Contact from ${body.name}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -48,21 +47,29 @@ export async function POST(request: Request) {
         <p>${body.message}</p>
       `,
     });
-    */
+
+    if (resendError) {
+      console.error('Resend API Error:', resendError);
+      throw new Error(`Resend failed: ${resendError.message}`);
+    }
 
     // Log for now (remove in production)
-    console.log('Contact form submission:', body);
+    console.log('Contact form submission sent via Resend:', data);
 
     return NextResponse.json(
-      { message: 'Form submitted successfully' },
+      { message: 'Form submitted successfully', data },
       { status: 200 }
     );
-  } catch (error) {
-    console.error('Contact form error:', error);
+  } catch (error: any) {
+    console.error('Contact form error details:', {
+      message: error.message,
+      stack: error.stack
+    });
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: error.message || 'Internal server error' },
       { status: 500 }
     );
   }
 }
+
 

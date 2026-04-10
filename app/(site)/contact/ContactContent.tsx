@@ -104,16 +104,16 @@ function DirectChannelSection() {
         >
           {/* Email Link */}
           <a
-            href="mailto:hello@jainamshah.com"
+            href="mailto:jainams471@gmail.com"
             className="font-neue text-base text-accent hover:underline underline-offset-4 transition-all duration-300"
           >
-            hello@jainamshah.com
+            jainams471@gmail.com
           </a>
 
           {/* Social Links */}
           <div className="flex items-center gap-6">
             <a
-              href="https://linkedin.com/in/jainamshah"
+              href="https://linkedin.com/in/jainamshah-aiml"
               target="_blank"
               rel="noopener noreferrer"
               className="font-neue text-sm text-background/80 hover:text-accent transition-colors duration-300"
@@ -122,7 +122,7 @@ function DirectChannelSection() {
             </a>
             <span className="text-background/30">•</span>
             <a
-              href="https://twitter.com/jainamshah"
+              href="https://twitter.com/jainamxshahh"
               target="_blank"
               rel="noopener noreferrer"
               className="font-neue text-sm text-background/80 hover:text-accent transition-colors duration-300"
