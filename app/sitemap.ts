@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { projects } from '@/lib/projects';
 import { articles } from '@/lib/articles';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://jainamshah.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://jainamshah.studio';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const projectUrls = projects.map((project) => ({
