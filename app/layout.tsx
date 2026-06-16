@@ -4,7 +4,7 @@ import { Analytics } from '@vercel/analytics/react';
 import LenisProvider from '@/components/providers/LenisProvider';
 import '@/styles/globals.css';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://jainamshah.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://jainamshah.studio';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -87,21 +87,31 @@ const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Jainam Shah',
-  jobTitle: 'AI Engineer & Full Stack Developer',
+  jobTitle: 'AI Product Architect',
   description: 'Building AI-powered products that win',
   url: siteUrl,
   sameAs: [
-    'https://linkedin.com/in/jainam-shah-aiml-ahmedabad',
-    'https://github.com/jainamxshah',
+    'https://www.linkedin.com/in/jainam-shah-aiml/',
     'https://twitter.com/jainamxshahh',
+    'https://github.com/jainamxshah',
+    'https://dev.to/jainamxshah',
+    'https://medium.com/@jainamxshah',
+    'https://www.youtube.com/@jainamshah',
   ],
   knowsAbout: [
     'Artificial Intelligence',
+    'Machine Learning',
+    'AI Product Development',
+    'Agentic AI',
     'Product Development',
     'SEO',
     'Full Stack Development',
-    'Machine Learning',
   ],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Ahmedabad',
+    addressCountry: 'IN',
+  },
 };
 
 export default function RootLayout({

@@ -49,5 +49,37 @@ export default async function CaseStudyPage({ params }: Props) {
     notFound();
   }
 
-  return <CaseStudyContent project={project} />;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://jainamshah.studio';
+
+  const workSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    '@id': `${siteUrl}/work/${project.slug}/#webpage`,
+    url: `${siteUrl}/work/${project.slug}`,
+    name: project.name,
+    description: project.impactSummary || project.shortDescription,
+    image: project.heroImageUrl ? `${siteUrl}${project.heroImageUrl}` : undefined,
+    creator: {
+      '@type': 'Person',
+      name: 'Jainam Shah',
+      url: siteUrl,
+    },
+    isPartOf: {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+    },
+    temporalCoverage: project.year,
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(workSchema),
+        }}
+      />
+      <CaseStudyContent project={project} />
+    </>
+  );
 }

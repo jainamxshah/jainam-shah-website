@@ -50,6 +50,43 @@ export default async function ArticlePage({ params }: Props) {
     notFound();
   }
 
-  return <ArticleContent article={article} />;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://jainamshah.studio';
+
+  const blogPostSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    '@id': `${siteUrl}/insights/${article.slug}/#webpage`,
+    url: `${siteUrl}/insights/${article.slug}`,
+    headline: article.title,
+    description: article.excerpt || article.seo.metaDescription,
+    image: article.featuredImage ? `${siteUrl}${article.featuredImage}` : `${siteUrl}/og-image.jpg`,
+    datePublished: article.date,
+    author: {
+      '@type': 'Person',
+      name: article.author || 'Jainam Shah',
+      url: siteUrl,
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Jainam Shah',
+      url: siteUrl,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}/insights/${article.slug}`,
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogPostSchema),
+        }}
+      />
+      <ArticleContent article={article} />;
+    </>
+  );
 }
 
