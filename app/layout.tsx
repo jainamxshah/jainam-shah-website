@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Toaster } from 'sonner';
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/next';
 import LenisProvider from '@/components/providers/LenisProvider';
 import '@/styles/globals.css';
 
